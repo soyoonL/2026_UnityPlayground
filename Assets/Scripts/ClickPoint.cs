@@ -50,7 +50,6 @@ public class ClickPoint : MonoBehaviour
             }
         }
        
-
     }
 
     void Evolution()
