@@ -7,8 +7,12 @@ public class ClickShooter : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("발사!");
-        GameObject fire = Instantiate(projectilePrefab, transform.position,transform.rotation);
-        fire.GetComponent<Projectile>().SetTarget(enemyTransform);
+        if(enemyTransform!=null)
+        {
+            Debug.Log("발사!");
+            GameObject fire = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            fire.GetComponent<Projectile>().SetTarget(enemyTransform);
+        }
+       
     }
 }

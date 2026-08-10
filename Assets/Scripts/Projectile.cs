@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-
         StartCoroutine(MoveToTarget());
     }
     public void SetTarget(Transform enemyTarget)
@@ -19,11 +18,12 @@ public class Projectile : MonoBehaviour
 
     IEnumerator MoveToTarget()
     {
-        while (Vector3.Distance(transform.position,target.position)>=0.1f)
+        while (target != null && Vector3.Distance(transform.position,target.position)>=0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position,speed * Time.deltaTime);
             yield return null;
         }
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
