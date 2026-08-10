@@ -2,21 +2,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //[SerializeField] private ClickPoint gameManager;
+    [SerializeField] GameManager gameManager;
     public float EnemyHp = 100;
-    
-    void Start()
-    {
-        
-    }
+    public int EnemyKillPoint = 10;
 
     public void TakeDamage(int damage)
     {
         EnemyHp-=damage;
         
-        //if(EnemyHp <= 0)
-        //{
-
-       // }
+        if(EnemyHp <= 0)
+        {
+            gameManager.PointUp();
+            Destroy(gameObject);
+        }
     }
 }

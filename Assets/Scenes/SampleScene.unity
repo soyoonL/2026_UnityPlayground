@@ -362,7 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3265692dc4a2dce4e84be6c7578f588f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  gameManager: {fileID: 805982386}
   EnemyHp: 100
+  EnemyKillPoint: 10
 --- !u!61 &50701501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1116,6 +1118,7 @@ MonoBehaviour:
   requiredPoint: 5
   evolutionPointCountText: {fileID: 1927909677}
   pointCountText: {fileID: 1298524419}
+  enemy: {fileID: 50701500}
 --- !u!4 &805982387
 Transform:
   m_ObjectHideFlags: 0
