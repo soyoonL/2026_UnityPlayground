@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
 
     IEnumerator MoveToTarget()
     {
-        while (target != null && Vector3.Distance(transform.position,target.position)>=0.1f)
+        while (target != null )
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position,speed * Time.deltaTime);
             yield return null;
@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     {
         Enemy enemy = other.GetComponent<Enemy>();
 
-        if (other.CompareTag("Enemy"))
+        if (enemy != null)
         {
             enemy.TakeDamage(damage);
             Destroy(gameObject);
