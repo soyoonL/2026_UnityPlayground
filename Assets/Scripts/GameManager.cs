@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI evolutionPointCountText;
     public TextMeshProUGUI pointCountText;
 
+    [Header("적 데이터")]
+    public EnemyData[] enemyDatabase;
+
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
     [SerializeField] Enemy enemy;
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         ogPointTextScale = pointCountText.transform.localScale;  // 원래 텍스트의 크기를 담아두는 변수
         ResetText();
+        SpawnRandomEnemy();
     }
 
     public void PointUp()
@@ -60,6 +64,15 @@ public class GameManager : MonoBehaviour
         currentPoint -= requiredPoint;
         requiredPoint *= 3;
         pointPerClick *= 2;
+    }
+
+    public void SpawnRandomEnemy()
+    {
+        if (enemyDatabase.Length == 0) return;
+
+        int randomIndex = Random.Range(0, enemyDatabase.Length);
+        EnemyData randomData = enemyDatabase[randomIndex];
+        enemy.InitEnemy(randomData);
     }
 
     void ResetText()

@@ -1,29 +1,42 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct EnemyData
+{
+    public string enemyName;
+    public float maxHp;
+    public int killPoint;
+    public Sprite enemySprite;
+}
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     [SerializeField] Slider hpSlider;
-    public float EnemyHp = 100;
+    [SerializeField] Image enemyImage;
+
+    public float currentHp;
     public int EnemyKillPoint = 10;
 
-    void Start()
+    public void InitEnemy(EnemyData data)
     {
-        hpSlider.maxValue = EnemyHp;
-        hpSlider.value = EnemyHp;
-    }
+        currentHp = data.maxHp;
+        EnemyKillPoint = data.killPoint;
 
+        hpSlider.maxValue = data.maxHp;
+        hpSlider.value = currentHp;
+        enemyImage.sprite = data.enemySprite;
+    }
     public void TakeDamage(int damage)
     {
-        EnemyHp-=damage;
-        hpSlider.value = EnemyHp;
+        currentHp -= damage;
+        hpSlider.value = currentHp;
 
-        if (EnemyHp <= 0)
+        if (currentHp <= 0)
         {
             gameManager.PointUp();
-            Destroy(gameObject);
-            hpSlider.gameObject.SetActive(false);
+            gameManager.SpawnRandomEnemy();
         }
     }
 }
