@@ -47,20 +47,18 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        ogPointTextScale = pointCountText.transform.localScale;  // ���� �ؽ�Ʈ�� ũ�⸦ ��Ƶδ� ����
-        ResetText();
         currentStage = 0;
         UpdateCharacterStage();
+        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
         SpawnRandomEnemy();
     }
 
     public void PointUp()
     {
         currentPoint+= enemy.EnemyKillPoint;
-        Debug.Log(currentPoint);
 
-        ResetText();
-        DoPointTextEffect(Color.gold, 1.2f);
+        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+        UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
     }
 
     public void Upgrade()
@@ -68,12 +66,9 @@ public class GameManager : MonoBehaviour
         if (currentStage < evolutionDatabase.Length-1 && currentPoint >= evolutionDatabase[currentStage].requiredPoint)
         {
             Evolution();
-            ResetText();
-            DoPointTextEffect(Color.red, 0.8f);
-            if (evolutionStage == evolutionSprites.Length)
-            {
-                evolutionPointCountText.text = "Evolution End!";
-            }
+            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+            UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
+            
         }
        
     }
@@ -101,47 +96,5 @@ public class GameManager : MonoBehaviour
         enemy.InitEnemy(randomData);
     }
 
-    void ResetText()
-    {
-        pointCountText.text = currentPoint.ToString() + "Points";
-
-        if(evolutionStage != evolutionSprites.Length)
-        {
-            evolutionPointCountText.text = "Need " + requiredPoint.ToString() + "Points";
-        }
-    }
-
-    void DoPointTextEffect(Color col,float scale)
-    {
-        if(textEffectCoroutine != null) StopCoroutine(textEffectCoroutine);
-        textEffectCoroutine = StartCoroutine(TextEffect(pointCountText,0.15f,col,scale));
-    }
-
-    IEnumerator TextEffect(TextMeshProUGUI go, float duration, Color col, float scale)
-    {
-        Vector3 targetScale = ogPointTextScale * scale;
-        Color ogColor = go.color;
-        duration /= 2;
-
-        float t = 0;
-        while(t < duration)
-        {
-            t +=Time.deltaTime;
-            go.transform.localScale = Vector3.Lerp(ogPointTextScale, targetScale, t / duration);
-            go.color = Color.Lerp(ogColor, col, t / duration); ;
-            yield return null;
-        }
-        t = 0;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            go.transform.localScale = Vector3.Lerp(targetScale, ogPointTextScale, t / duration);
-            go.color = Color.Lerp(col, ogColor, t / duration);
-            yield return null;
-        }
-
-        go.transform.localScale = ogPointTextScale;
-        go.color = ogColor;
-        textEffectCoroutine = null;
-    }
+    
 }
