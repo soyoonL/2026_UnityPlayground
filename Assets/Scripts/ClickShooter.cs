@@ -9,9 +9,13 @@ public class ClickShooter : MonoBehaviour
     {
         if(enemyTransform!=null)
         {
-            Debug.Log("น฿ป็!");
+   
             Projectile fire = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            fire.SetTarget(enemyTransform);
+
+            int currentDamage = GameManager.Instance.CurrentDamage;
+
+            fire.SetTarget(enemyTransform,currentDamage);
+            
         }
        
     }

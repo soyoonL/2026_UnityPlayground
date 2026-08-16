@@ -11,10 +11,12 @@ public class Projectile : MonoBehaviour
     {
         StartCoroutine(MoveToTarget());
     }
-    public void SetTarget(Transform enemyTarget)
+    public void SetTarget(Transform enemyTarget,int newDamage)
     {
         target = enemyTarget;
+        damage = newDamage;
     }
+
 
     IEnumerator MoveToTarget()
     {

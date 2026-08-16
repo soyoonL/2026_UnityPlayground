@@ -12,7 +12,6 @@ public struct EnemyData
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
     [SerializeField] Slider hpSlider;
     [SerializeField] Image enemyImage;
 
@@ -35,8 +34,8 @@ public class Enemy : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            gameManager.PointUp();
-            gameManager.SpawnRandomEnemy();
+            GameManager.Instance.PointUp();
+            GameManager.Instance.SpawnRandomEnemy();
         }
     }
 }

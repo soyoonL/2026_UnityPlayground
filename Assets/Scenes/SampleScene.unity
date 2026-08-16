@@ -1173,17 +1173,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297ed38127083c14e938d8f14a49988f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
+  evolutionDatabase:
+  - stageName: 1
+    characterSprite: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
+    damage: 20
+    requiredPoint: 0
+  - stageName: 2
+    characterSprite: {fileID: -3895947494790806695, guid: b66c48489e8f72b43a8e8ba1c09ee3fd, type: 3}
+    damage: 30
+    requiredPoint: 50
+  - stageName: 3
+    characterSprite: {fileID: -6717909169813735490, guid: 48bad6cd581a1944e8f5cfa9f367e273, type: 3}
+    damage: 30
+    requiredPoint: 100
+  - stageName: 4
+    characterSprite: {fileID: -1442730041863635797, guid: 02fd3bc8fd09ea44eb68f916c5ae6fe7, type: 3}
+    damage: 40
+    requiredPoint: 200
+  - stageName: 5
+    characterSprite: {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
+    damage: 50
+    requiredPoint: 300
+  currentPoint: 100
   characterImage: {fileID: 1475024316}
-  evolutionSprites:
-  - {fileID: -3895947494790806695, guid: b66c48489e8f72b43a8e8ba1c09ee3fd, type: 3}
-  - {fileID: -6717909169813735490, guid: 48bad6cd581a1944e8f5cfa9f367e273, type: 3}
-  - {fileID: -1442730041863635797, guid: 02fd3bc8fd09ea44eb68f916c5ae6fe7, type: 3}
-  - {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
-  currentPoint: 0
-  pointPerClick: 1
-  requiredPoint: 5
-  evolutionPointCountText: {fileID: 1927909677}
-  pointCountText: {fileID: 1298524419}
   enemyDatabase:
   - enemyName: rosa
     maxHp: 50
