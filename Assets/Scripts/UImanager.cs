@@ -10,6 +10,10 @@ public class UImanager : MonoBehaviour
     public TextMeshProUGUI evolutionPointCountText;
     public TextMeshProUGUI pointCountText;
 
+    [Header("패널 관리")]
+    public GameObject mainPanel;
+    public GameObject huntPanel;
+
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
 
@@ -24,15 +28,30 @@ public class UImanager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (pointCountText != null)
+        {
+            ogPointTextScale = pointCountText.transform.localScale;  // 원래 텍스트의 크기를 담아두는 변수
+        }
     }
 
     private void Start()
     {
-        if(pointCountText  != null)
-        {
-            ogPointTextScale = pointCountText.transform.localScale;  // 원래 텍스트의 크기를 담아두는 변수
-        }
-       
+       OpenMainPanel();
+    }
+
+    /// <summary> 메인 화면으로 이동 </summary>
+    public void OpenMainPanel()
+    {
+        mainPanel.SetActive(true);
+        huntPanel.SetActive(false);
+    }
+
+    /// <summary> 전투 화면으로 이동 </summary>
+    public void OpenHuntPanel()
+    {
+        mainPanel.SetActive(false);
+        huntPanel.SetActive(true);
     }
 
     public void ResetText(int currentPoint, int requiredPoint, bool isMaxStage)
