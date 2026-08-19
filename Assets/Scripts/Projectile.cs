@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Projectile : MonoBehaviour
 {
+    private IObjectPool<Projectile> managedPool; 
     private Transform target; // 적의 위치를 담을 변수
     private float speed = 10f; // 발사체의 속도
-    public int damage = 10; // 발사체의 데미지
+    public int damage; // 발사체의 데미지
 
-    /// <summary> 발사체 생성 시 코루틴 시작 </summary>
-    private void Start()
+    public void SetPool(IObjectPool<Projectile> pool)
     {
-        StartCoroutine(MoveToTarget());
+        managedPool = pool;
     }
 
     /// <summary>
@@ -22,6 +23,9 @@ public class Projectile : MonoBehaviour
     {
         target = enemyTarget;
         damage = newDamage;
+
+        StopAllCoroutines();
+        StartCoroutine(MoveToTarget());
     }
 
     IEnumerator MoveToTarget()
@@ -45,6 +49,18 @@ public class Projectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
+            ReleaseToPool();
+        }
+    }
+
+    private void ReleaseToPool()
+    {
+        if(managedPool != null)
+        {
+            managedPool.Release(this);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }

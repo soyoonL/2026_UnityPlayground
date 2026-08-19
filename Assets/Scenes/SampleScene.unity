@@ -456,7 +456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickShooter
   projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
-  enemyTransform: {fileID: 1531482063}
+  spawnPoint: {fileID: 258617350}
+  targetEnemy: {fileID: 1531482063}
 --- !u!212 &258617349
 SpriteRenderer:
   serializedVersion: 3
@@ -1177,7 +1178,7 @@ MonoBehaviour:
   - stageName: 1
     characterSprite: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
     damage: 20
-    requiredPoint: 0
+    requiredPoint: 20
   - stageName: 2
     characterSprite: {fileID: -3895947494790806695, guid: b66c48489e8f72b43a8e8ba1c09ee3fd, type: 3}
     damage: 30
@@ -1194,8 +1195,6 @@ MonoBehaviour:
     characterSprite: {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
     damage: 50
     requiredPoint: 300
-  currentPoint: 100
-  characterImage: {fileID: 1475024316}
   enemyDatabase:
   - enemyName: rosa
     maxHp: 50
@@ -1210,6 +1209,8 @@ MonoBehaviour:
     killPoint: 20
     enemySprite: {fileID: 4043342025076542264, guid: 5190fb47b4e6ee74da299210687b62e8, type: 3}
   enemy: {fileID: 1531482061}
+  currentPoint: 0
+  characterImage: {fileID: 1475024316}
 --- !u!4 &805982387
 Transform:
   m_ObjectHideFlags: 0
@@ -1799,7 +1800,7 @@ MonoBehaviour:
   hpSlider: {fileID: 12819809}
   enemyImage: {fileID: 1300788839}
   currentHp: 0
-  EnemyKillPoint: 10
+  currentKillPoint: 0
 --- !u!212 &1531482062
 SpriteRenderer:
   serializedVersion: 3
