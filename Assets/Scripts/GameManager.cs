@@ -53,18 +53,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary> 게임 시작 시 진화단계, 캐릭터, UI, 적 초기화 </summary>
     private void Start()
     {
-        currentStage = 0;
-        UpdateCharacterStage();
-        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-        SpawnRandomEnemy();
+        currentStage = 0; // 시작 진화 단계는 0단계부터
+        UpdateCharacterStage(); // 단계에 맞게 캐릭터 이미지 갱신
+        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage); // UI 텍스트 
+        SpawnRandomEnemy(); // 첫번째 적 생성
     }
 
     /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
     public void PointUp()
     {
-        currentPoint+= enemy.EnemyKillPoint;
+        currentPoint+= enemy.currentKillPoint;
 
         UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
         UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
@@ -80,7 +82,6 @@ public class GameManager : MonoBehaviour
             UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
             
         }
-       
     }
 
     /// <summary> 캐릭터 진화와 관련된 함수로, 현재 포인트에서 requiredPoint만큼 차감하고, 현재 진화 단계를 1만큼 올린다. 그리고 UpdateCharacterStage()를 호출</summary>
@@ -92,14 +93,14 @@ public class GameManager : MonoBehaviour
        
     }
 
-    /// <summary> 캐릭터가 진화하면 캐릭터의 이미지를 진화단계에 맞춰 변경해주는 함수 </summary>
+    /// <summary> 캐릭터의 이미지를 진화단계에 맞춰 갱신해주는 함수 </summary>
     void UpdateCharacterStage()
     {
         EvolutionData currentdata = evolutionDatabase[currentStage];
         characterImage.sprite = currentdata.characterSprite;
     }
 
-    /// <summary> 적이 죽으면 적을 랜덤으로 소환하는 함수로 randomData라는 인수를 InitEnemy 함수에 전달해서 호출 </summary>
+    /// <summary> 적을 랜덤으로 소환하는 함수로 randomData라는 인수(랜덤으로 나온 적 데이터)를 InitEnemy 함수에 전달해서 호출 </summary>
     public void SpawnRandomEnemy()
     {
         if (enemyDatabase.Length == 0) return;
@@ -109,5 +110,4 @@ public class GameManager : MonoBehaviour
         enemy.InitEnemy(randomData);
     }
 
-    
 }
