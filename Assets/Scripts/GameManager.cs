@@ -59,9 +59,23 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 0; // 시작 진화 단계는 0단계부터
         UpdateCharacterStage(); // 단계에 맞게 캐릭터 이미지 갱신
-        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage); // UI 텍스트 
+
+        // Instance가 확실히 준비된 후 안전하게 호출
+        if(UImanager.Instance != null)
+        {
+            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage); // UI 텍스트 
+        }
+       
         SpawnRandomEnemy(); // 첫번째 적 생성
     }
+
+    //private void OnEnable()
+    //{
+    //    if(UImanager.Instance != null)
+    //    {
+    //        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage); // UI 텍스트 
+    //    }
+    //}
 
     /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
     public void PointUp()
