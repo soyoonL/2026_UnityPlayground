@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position,speed * Time.deltaTime);
             yield return null;
         }
-        Destroy(gameObject);
+        ReleaseToPool();
     }
 
     /// <summary>
