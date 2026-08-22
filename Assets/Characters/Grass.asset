@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Chicorita
+  icon: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
+  price: 150
+  isUnlocked: 0
+  evolutionStages:
+  - stageName: 1
+    characterSprite: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
+    damage: 50
+    requiredPoint: 60
+  - stageName: 2
+    characterSprite: {fileID: -5691275476582955946, guid: 45791c88c51d66345bbf9faa95c38a59, type: 3}
+    damage: 100
+    requiredPoint: 100
+  - stageName: 3
+    characterSprite: {fileID: -5319125468221776351, guid: 85d5cf3a5d521314887ad0990d98da0a, type: 3}
+    damage: 120
+    requiredPoint: 150

@@ -3665,6 +3665,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   allCharacters:
   - {fileID: 11400000, guid: ed6d3e11a8d0fa447b15cfd1fa2ea56b, type: 2}
+  - {fileID: 11400000, guid: 235e2d5da3dd2b44fb768b5e4ab383fd, type: 2}
+  - {fileID: 11400000, guid: 0997db99f8749064895f8a6a241c8619, type: 2}
   cardPrefab: {fileID: 6728135703668418774, guid: df0d48afc7e854342a91760e713866c5, type: 3}
   cardParent: {fileID: 1068221950}
 --- !u!1 &1886983552
