@@ -13,6 +13,7 @@ public class UImanager : MonoBehaviour
     [Header("패널 관리")]
     public GameObject mainPanel;
     public GameObject huntPanel;
+    public GameObject shopPanel;
 
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
@@ -52,6 +53,21 @@ public class UImanager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         huntPanel.SetActive(true);
+    }
+
+    public void OpenShopPanel()
+    {
+        shopPanel.SetActive(true);
+        mainPanel.SetActive(false);
+        //huntPanel.SetActive(false);
+       
+    }
+    public void CloseShopPanel()
+    {
+        shopPanel.SetActive(false);
+        mainPanel.SetActive(true);
+        //huntPanel.SetActive(false);
+       
     }
 
     public void ResetText(int currentPoint, int requiredPoint, bool isMaxStage)
