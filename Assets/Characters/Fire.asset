@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: "\uD30C\uC774\uB9AC"
+  characterName: Charmander
   icon: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
   price: 0
   isUnlocked: 0
