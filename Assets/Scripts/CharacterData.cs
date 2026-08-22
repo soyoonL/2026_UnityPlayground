@@ -18,6 +18,8 @@ public class CharacterData : ScriptableObject
     public int price;
     public bool isUnlocked;
 
+    public int currentStage;
+
     [Header("진화 데이터")]
     public EvolutionData[] evolutionStages;
 }

@@ -68,6 +68,7 @@ public class ShopManager : MonoBehaviour
     public void EquipCharacter(CharacterData data)
     {
         GameManager.Instance.currentCharacter = data;
+        GameManager.Instance.UpdateCharacterStage();
         RefreshAllCards();
     }
 

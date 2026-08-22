@@ -1836,7 +1836,7 @@ MonoBehaviour:
     killPoint: 20
     enemySprite: {fileID: 4043342025076542264, guid: 5190fb47b4e6ee74da299210687b62e8, type: 3}
   enemy: {fileID: 1531482061}
-  currentPoint: 0
+  currentPoint: 100
   characterImage: {fileID: 1475024316}
 --- !u!4 &805982387
 Transform:

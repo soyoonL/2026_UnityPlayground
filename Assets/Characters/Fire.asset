@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Charmander
   icon: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
   price: 0
-  isUnlocked: 0
+  isUnlocked: 1
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}

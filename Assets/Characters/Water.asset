@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: "\uAF2C\uBD80\uAE30"
+  characterName: Squirtle
   icon: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
   price: 100
-  isUnlocked: 0
+  isUnlocked: 1
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
