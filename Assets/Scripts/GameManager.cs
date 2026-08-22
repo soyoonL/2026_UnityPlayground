@@ -3,23 +3,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public struct EvolutionData // 캐릭터 구조체
-{
-    public string stageName;
-    public Sprite characterSprite;
-    public int damage;
-    public int requiredPoint;
-}
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {  get; private set; }
 
     /// <summary> 캐릭터의 진화 단계에 필요한 정보를 저장하는 배열 </summary>
-    [Header("진화 데이터 리스트")]
-    public EvolutionData[] evolutionDatabase;
-    
+    [Header("현재 선택된 캐릭터 Data")]
+    public CharacterData currentCharacter; // 기존 evolutionDatabase 대신 현재 캐릭터 에셋을 참조
+
     /// <summary> 적과 관련된 정보를 저장하는 배열 </summary>
     [Header("적 데이터 리스트")]
     public EnemyData[] enemyDatabase;
@@ -33,13 +24,13 @@ public class GameManager : MonoBehaviour
     private int currentStage; // 캐릭터의 현재 진화 단계
 
     /// <summary> evolutionDatabase에서 damage를 안전하게 참조,InndexOutOfRange가 나지 않도록 Mathf 사용 </summary>
-    public int CurrentDamage => evolutionDatabase[Mathf.Min(currentStage, evolutionDatabase.Length - 1)].damage;
+    public int CurrentDamage => currentCharacter.evolutionStages[Mathf.Min(currentStage, currentCharacter.evolutionStages.Length - 1)].damage;
 
     /// <summary> ResetText()의 매개변수,현재 마지막 진화 단계에 도달했는지 여부 </summary>
-    public bool IsMaxStage => currentStage >= evolutionDatabase.Length - 1;
+    public bool IsMaxStage => currentStage >= currentCharacter.evolutionStages.Length - 1;
 
     /// <summary> ResetText()의 매개변수, 마지막 진화 단계에 도달할시 0을 반환 </summary>
-    public int CurrentRequiredPoint => IsMaxStage ? 0 : evolutionDatabase[currentStage].requiredPoint; 
+    public int CurrentRequiredPoint => IsMaxStage ? 0 : currentCharacter.evolutionStages[currentStage].requiredPoint; 
 
     private void Awake()
     {
@@ -89,7 +80,7 @@ public class GameManager : MonoBehaviour
     /// <summary> Upgrade 버튼을 누를 시 호출되는 함수로 Evolution()과 ResetText(), DoPointTextEffect()를 호출 </summary>
     public void Upgrade()
     {
-        if (currentStage < evolutionDatabase.Length-1 && currentPoint >= evolutionDatabase[currentStage].requiredPoint)
+        if (currentStage < currentCharacter.evolutionStages.Length-1 && currentPoint >= currentCharacter.evolutionStages[currentStage].requiredPoint)
         {
             Evolution();
             UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
@@ -101,7 +92,7 @@ public class GameManager : MonoBehaviour
     /// <summary> 캐릭터 진화와 관련된 함수로, 현재 포인트에서 requiredPoint만큼 차감하고, 현재 진화 단계를 1만큼 올린다. 그리고 UpdateCharacterStage()를 호출</summary>
     void Evolution()
     {
-        currentPoint -= evolutionDatabase[currentStage].requiredPoint;
+        currentPoint -= currentCharacter.evolutionStages[currentStage].requiredPoint;
         currentStage++;
         UpdateCharacterStage();
        
@@ -110,7 +101,7 @@ public class GameManager : MonoBehaviour
     /// <summary> 캐릭터의 이미지를 진화단계에 맞춰 갱신해주는 함수 </summary>
     void UpdateCharacterStage()
     {
-        EvolutionData currentdata = evolutionDatabase[currentStage];
+        EvolutionData currentdata = currentCharacter.evolutionStages[currentStage];
         characterImage.sprite = currentdata.characterSprite;
     }
 
