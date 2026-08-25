@@ -35,7 +35,7 @@ public class ShopCardUI : MonoBehaviour
 
         bool isEquipped = (GameManager.Instance.currentCharacter == cardData);
 
-        if (isEquipped) // 현재 장착 중인 캐릭터와 카드 데이터가 일치하면
+        if (isEquipped ) // 현재 장착 중인 캐릭터와 카드 데이터가 일치하면
         {
             buttonText.text = "Equipped";
             actionButton.interactable = false;

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UImanager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UImanager : MonoBehaviour
     public GameObject mainPanel;
     public GameObject huntPanel;
     public GameObject shopPanel;
+    public GameObject selectCharacterPanel;
 
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
@@ -21,24 +23,16 @@ public class UImanager : MonoBehaviour
     private void Awake()
     {
         // 싱글톤 초기화
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
 
-        if (pointCountText != null)
-        {
-            ogPointTextScale = pointCountText.transform.localScale;  // 원래 텍스트의 크기를 담아두는 변수
-        }
+        if (pointCountText != null) ogPointTextScale = pointCountText.transform.localScale;// 원래 텍스트의 크기를 담아두는 변수
+        
     }
 
     private void Start()
     {
-        OpenShopPanel();
+        OpenSelectCharacterPanel();
     }
 
     /// <summary> 메인 화면으로 이동 </summary>
@@ -46,6 +40,31 @@ public class UImanager : MonoBehaviour
     {
         mainPanel.SetActive(true);
         huntPanel.SetActive(false);
+
+    }
+
+    public void OpenSelectCharacterPanel()
+    {
+        if(selectCharacterPanel != null) selectCharacterPanel.SetActive(true);
+    }
+
+    public void SelectStarterCharacter(CharacterData data)
+    {
+        data.isUnlocked = true;
+        data.defaultIsUnlocked = true;
+        GameManager.Instance.currentCharacter = data; 
+        GameManager.Instance.UpdateCharacterStage();
+
+        ResetText(
+                GameManager.Instance.currentPoint,
+               GameManager.Instance.CurrentRequiredPoint,
+                GameManager.Instance.IsMaxStage
+                );
+
+        if (selectCharacterPanel != null) selectCharacterPanel.SetActive(false);
+        if (mainPanel != null) mainPanel.SetActive(true);
+        if (ShopManager.Instance != null) ShopManager.Instance.RefreshAllCards();
+        
     }
 
     /// <summary> 전투 화면으로 이동 </summary>
