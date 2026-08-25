@@ -15,6 +15,8 @@ MonoBehaviour:
   characterName: Charmander
   icon: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
   price: 0
+  defaultIsUnlocked: 0
+  projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
   isUnlocked: 0
   currentStage: 0
   evolutionStages:

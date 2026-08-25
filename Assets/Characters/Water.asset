@@ -15,6 +15,8 @@ MonoBehaviour:
   characterName: Squirtle
   icon: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
   price: 100
+  defaultIsUnlocked: 0
+  projectilePrefab: {fileID: 6412261967305347050, guid: f8ea657ed0b738c40973475bf26ad6f7, type: 3}
   isUnlocked: 1
   currentStage: 1
   evolutionStages:

@@ -797,7 +797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc827fffe53dd84c9c24034dc5d4b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickShooter
-  projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
   spawnPoint: {fileID: 258617350}
   targetEnemy: {fileID: 1531482063}
 --- !u!212 &258617349

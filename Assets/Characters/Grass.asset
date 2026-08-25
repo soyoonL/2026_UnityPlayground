@@ -15,6 +15,8 @@ MonoBehaviour:
   characterName: Chicorita
   icon: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
   price: 150
+  defaultIsUnlocked: 0
+  projectilePrefab: {fileID: 3388756679424333936, guid: 8d0bd42db105eab478ca350eafdfa05d, type: 3}
   isUnlocked: 0
   currentStage: 0
   evolutionStages:

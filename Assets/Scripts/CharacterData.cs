@@ -17,6 +17,7 @@ public class CharacterData : ScriptableObject
     public Sprite icon;
     public int price;
     public bool defaultIsUnlocked;
+    public Projectile projectilePrefab; // 캐릭터 전용 발사체 프리팹
 
     [Header("실시간 변경 데이터")]
     public bool isUnlocked;
