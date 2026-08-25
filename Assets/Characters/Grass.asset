@@ -16,6 +16,7 @@ MonoBehaviour:
   icon: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
   price: 150
   isUnlocked: 0
+  currentStage: 0
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}

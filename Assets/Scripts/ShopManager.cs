@@ -21,6 +21,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
+        ResetAllCharacterData();
         CreatShopCards();
     }
 
@@ -67,9 +68,19 @@ public class ShopManager : MonoBehaviour
     /// <summary> 캐릭터 장착 기능 </summary>
     public void EquipCharacter(CharacterData data)
     {
+        
         GameManager.Instance.currentCharacter = data;
-        GameManager.Instance.UpdateCharacterStage();
         RefreshAllCards();
+        GameManager.Instance.UpdateCharacterStage();
+        
+        if(UImanager.Instance != null)
+        {
+            UImanager.Instance.ResetText(
+                GameManager.Instance.currentPoint,
+               GameManager.Instance.CurrentRequiredPoint,
+                GameManager.Instance.IsMaxStage
+                );
+        }
     }
 
     /// <summary> 모든 카드의 UI 버튼 상태(장착 중/장착/구매) 갱신 </summary>
@@ -78,6 +89,19 @@ public class ShopManager : MonoBehaviour
         foreach (var card in spawnedCards) // var : 암시적 타입 ,오른쪽 자료형을 보고 컴파일러가 타입을 알아서 추론하게 함, 가독성 관리에 굿
         {
             card.UpdateState();
+        }
+    }
+
+    private void ResetAllCharacterData()
+    {
+        if (allCharacters == null) return;
+
+        foreach (CharacterData character in allCharacters)
+        {
+            if(cardParent != null)
+            {
+                character.ResetData();
+            }
         }
     }
 }

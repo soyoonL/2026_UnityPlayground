@@ -38,7 +38,7 @@ public class UImanager : MonoBehaviour
 
     private void Start()
     {
-       OpenMainPanel();
+        OpenShopPanel();
     }
 
     /// <summary> 메인 화면으로 이동 </summary>

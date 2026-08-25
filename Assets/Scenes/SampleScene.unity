@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297ed38127083c14e938d8f14a49988f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickPoint
-  currentCharacter: {fileID: 11400000, guid: ed6d3e11a8d0fa447b15cfd1fa2ea56b, type: 2}
+  currentCharacter: {fileID: 0}
   enemyDatabase:
   - enemyName: rosa
     maxHp: 50
