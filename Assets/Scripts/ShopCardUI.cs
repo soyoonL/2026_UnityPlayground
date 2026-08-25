@@ -20,6 +20,7 @@ public class ShopCardUI : MonoBehaviour
 
         if (characterIcon != null && data.icon != null) characterIcon.sprite = data.icon;
         if (nameText != null) nameText.text = data.characterName;
+        if (priceText != null) priceText.text = $"{cardData.price}P";
 
         UpdateState();
 
@@ -48,7 +49,7 @@ public class ShopCardUI : MonoBehaviour
         }
         else // 둘다 아니면
         {
-            buttonText.text = $"{cardData.price}P";
+            buttonText.text = "Rocked";
             actionButton.interactable = true;
         }
     }
