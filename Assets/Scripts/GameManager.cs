@@ -58,19 +58,13 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    /// <summary> 게임 시작 시 진화단계, 캐릭터, UI, 적 초기화 </summary>
     private void Start()
     {
         // 단계에 맞게 캐릭터 이미지 갱신
-        UpdateCharacterStage(); 
+        UpdateCharacterStage();
+        // 첫번째 적 생성
+        SpawnRandomEnemy(); 
 
-        // Instance가 확실히 준비된 후 안전하게 호출
-        if(UImanager.Instance != null)
-        {
-            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage); // UI 텍스트 
-        }
-       
-        SpawnRandomEnemy(); // 첫번째 적 생성
     }
 
     /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
@@ -91,7 +85,7 @@ public class GameManager : MonoBehaviour
     /// <summary> Upgrade 버튼을 누를 시 호출되는 함수로 Evolution()과 ResetText(), DoPointTextEffect()를 호출 </summary>
     public void Upgrade()
     {
-        if (currentCharacter != null || currentCharacter.evolutionStages == null) return;
+        if (currentCharacter == null || currentCharacter.evolutionStages == null) return;
 
         if (!IsMaxStage && currentPoint >= CurrentRequiredPoint)
         {
@@ -101,7 +95,7 @@ public class GameManager : MonoBehaviour
             {
                 UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
                 UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
-
+                Debug.Log("업그레이드!");
             }
            
         }
