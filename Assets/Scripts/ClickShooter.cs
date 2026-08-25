@@ -6,9 +6,22 @@ public class ClickShooter : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;   // 소환되는 위치
     [SerializeField] private Transform targetEnemy; // 적의 위치가 고정되어있는 상태이므로 인스펙터에서 끌어오는 형식으로 ㄱ
+    [SerializeField] private Transform poolContainer;
 
     private Dictionary<Projectile,IObjectPool<Projectile>> poolDictionary = new Dictionary<Projectile, IObjectPool<Projectile>>();
 
+    /// <summary> 발사체를 묶어둘 부모 Transform 가져오기 </summary>
+    private Transform GetContainer()
+    {
+        if(poolContainer == null)
+        {
+            GameObject containerObj = new GameObject("ProjectilePool");
+            poolContainer = containerObj.transform;
+        }
+        return poolContainer;
+    }
+
+    /// <summary> 프리팹에 맞는 풀을 가져오거나 없으면 새로 생성 </summary>
     private IObjectPool<Projectile> GetOrCreatPool(Projectile prefab)
     {
         if(!poolDictionary.TryGetValue(prefab, out var pool))
@@ -16,7 +29,7 @@ public class ClickShooter : MonoBehaviour
             pool = new ObjectPool<Projectile>(
                 createFunc: () =>
                 {
-                    Projectile bullet = Instantiate(prefab);
+                    Projectile bullet = Instantiate(prefab,GetContainer());
                     return bullet;
                 },
                 actionOnGet: bullet => bullet.gameObject.SetActive(true),

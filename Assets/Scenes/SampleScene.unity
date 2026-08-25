@@ -799,6 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickShooter
   spawnPoint: {fileID: 258617350}
   targetEnemy: {fileID: 1531482063}
+  poolContainer: {fileID: 0}
 --- !u!212 &258617349
 SpriteRenderer:
   serializedVersion: 3

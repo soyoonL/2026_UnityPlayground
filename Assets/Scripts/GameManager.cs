@@ -95,7 +95,6 @@ public class GameManager : MonoBehaviour
             {
                 UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
                 UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
-                Debug.Log("업그레이드!");
             }
            
         }
