@@ -4286,6 +4286,7 @@ MonoBehaviour:
   huntPanel: {fileID: 114114032}
   shopPanel: {fileID: 496150677}
   selectCharacterPanel: {fileID: 1640974028}
+  MainCharacter: {fileID: 1288048670}
 --- !u!4 &1885067694
 Transform:
   m_ObjectHideFlags: 0
@@ -4656,7 +4657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2105531824
 RectTransform:
   m_ObjectHideFlags: 0

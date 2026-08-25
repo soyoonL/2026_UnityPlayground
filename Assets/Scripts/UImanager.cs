@@ -17,6 +17,9 @@ public class UImanager : MonoBehaviour
     public GameObject shopPanel;
     public GameObject selectCharacterPanel;
 
+    [Header("메인화면 버튼 관리")]
+    public Image MainCharacter;
+
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
 

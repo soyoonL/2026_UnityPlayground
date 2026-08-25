@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         characterImage.enabled = true;
         EvolutionData currentdata = currentCharacter.evolutionStages[currentCharacter.currentStage];
         characterImage.sprite = currentdata.characterSprite;
+        UImanager.Instance.MainCharacter.sprite = currentdata.characterSprite;
     }
 
     /// <summary> 적을 랜덤으로 소환하는 함수로 randomData라는 인수(랜덤으로 나온 적 데이터)를 InitEnemy 함수에 전달해서 호출 </summary>
