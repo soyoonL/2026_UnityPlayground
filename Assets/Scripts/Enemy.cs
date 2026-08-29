@@ -43,8 +43,7 @@ public class Enemy : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            GameManager.Instance.PointUp();
-            GameManager.Instance.SpawnRandomEnemy();
+            GameManager.Instance.OnEnemyKilled();
         }
     }
 }

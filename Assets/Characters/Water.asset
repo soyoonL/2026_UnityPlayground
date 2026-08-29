@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Squirtle
   icon: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
-  price: 100
+  price: 400
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 6412261967305347050, guid: f8ea657ed0b738c40973475bf26ad6f7, type: 3}
-  isUnlocked: 1
-  currentStage: 1
+  isUnlocked: 0
+  currentStage: 0
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
-    damage: 20
+    damage: 25
     requiredPoint: 30
   - stageName: 2
     characterSprite: {fileID: 3292557865119310245, guid: c4201d5859f70af45be4c7b8e06b1475, type: 3}
-    damage: 40
+    damage: 45
     requiredPoint: 50
   - stageName: 3
     characterSprite: {fileID: -1342398961456278623, guid: 4b0cc09860574564ba860c0a9106206f, type: 3}
-    damage: 60
+    damage: 65
     requiredPoint: 70

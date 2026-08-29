@@ -20,6 +20,10 @@ public class UImanager : MonoBehaviour
     [Header("메인화면 버튼 관리")]
     public Image MainCharacter;
 
+    [Header("보스전 UI")]
+    public GameObject bossTimerGroup;
+    public TextMeshProUGUI bossTimerText;
+
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
 
@@ -49,6 +53,7 @@ public class UImanager : MonoBehaviour
     public void OpenSelectCharacterPanel()
     {
         if(selectCharacterPanel != null) selectCharacterPanel.SetActive(true);
+       
     }
 
     public void SelectStarterCharacter(CharacterData data)
@@ -64,7 +69,6 @@ public class UImanager : MonoBehaviour
                GameManager.Instance.CurrentRequiredPoint,
                 GameManager.Instance.IsMaxStage
                 );
-
         if (selectCharacterPanel != null) selectCharacterPanel.SetActive(false);
         if (mainPanel != null) mainPanel.SetActive(true);
         if (ShopManager.Instance != null) ShopManager.Instance.RefreshAllCards();
@@ -76,6 +80,7 @@ public class UImanager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         huntPanel.SetActive(true);
+       
     }
 
     public void OpenShopPanel()
@@ -91,6 +96,19 @@ public class UImanager : MonoBehaviour
         mainPanel.SetActive(true);
         //huntPanel.SetActive(false);
        
+    }
+
+    /// <summary> 보스전 UI 활성화 </summary>
+    public void ToggleBossTimerUI(bool isActive)
+    {
+        if(bossTimerGroup != null) bossTimerGroup.SetActive(isActive);
+    }
+
+    /// <summary> 보스전 타이머 </summary>
+    public void UpdateBossTimer(float remainingTime)
+    {
+        // Mathf.CeilToInt(f) : 입력받은 수를 무조건 올림하여 정수(int)로 반환하는 유니티 함수
+        if (bossTimerText != null) bossTimerText.text = $"Boss : {Mathf.CeilToInt(remainingTime)}s";
     }
 
     public void ResetText(int currentPoint, int requiredPoint, bool isMaxStage)

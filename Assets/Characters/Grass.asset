@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Chicorita
   icon: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
-  price: 150
+  price: 300
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 3388756679424333936, guid: 8d0bd42db105eab478ca350eafdfa05d, type: 3}
   isUnlocked: 0
@@ -22,13 +22,13 @@ MonoBehaviour:
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
-    damage: 50
+    damage: 30
     requiredPoint: 60
   - stageName: 2
     characterSprite: {fileID: -5691275476582955946, guid: 45791c88c51d66345bbf9faa95c38a59, type: 3}
-    damage: 100
+    damage: 50
     requiredPoint: 100
   - stageName: 3
     characterSprite: {fileID: -5319125468221776351, guid: 85d5cf3a5d521314887ad0990d98da0a, type: 3}
-    damage: 120
+    damage: 70
     requiredPoint: 150

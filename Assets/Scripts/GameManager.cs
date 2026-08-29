@@ -19,8 +19,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] Enemy enemy;
 
     // 캐릭터 관련 테이터
-    public int currentPoint; // 캐릭터가 현재 소지하고 있는 포인트
+    public int currentPoint;     // 캐릭터가 현재 소지하고 있는 포인트
     public Image characterImage; // 캐릭터 이미지 저장하고, 캐릭터 진화 시 진화한 이미지로 교체하는 데 사용
+
+    [Header("보스전 설정")]
+    public EnemyData bossData;        // 인스펙터에서 등록할 보스 데이터  
+    public int killCountToBoss = 10;  // 보스 등장에 필요한 일반 적 처치 수
+    public float bossTimeLimit = 30f; // 제한시간(초)
+    public int bossFailPenalty = 100; // 실패 시 차감될 포인트
+    public Slider TimerSlider;
+
+    private int currentKillCount = 0;
+    private bool isBossStage = false;
+    private float currentBossTimer = 0f;
 
     /// <summary> 캐릭터가 없을 때는 0, 있을 때에는 현재 단계 데미지 반환 </summary>
     public int CurrentDamage
@@ -67,19 +78,20 @@ public class GameManager : MonoBehaviour
 
     }
 
-    /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
-    public void PointUp()
+    //  보스전 타이머
+    private void Update()
     {
-        if (currentCharacter == null) return;
-
-        currentPoint+= enemy.currentKillPoint;
-
-        if(UImanager.Instance != null)
+        if (isBossStage)
         {
-            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-            UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
+            currentBossTimer -= Time.deltaTime;
+            TimerSlider.value = currentBossTimer;
+
+            if (UImanager.Instance != null) 
+                UImanager.Instance.UpdateBossTimer(currentBossTimer);
+
+            if (currentBossTimer <= 0f)
+                OnBossFail();
         }
-        
     }
 
     /// <summary> Upgrade 버튼을 누를 시 호출되는 함수로 Evolution()과 ResetText(), DoPointTextEffect()를 호출 </summary>
@@ -128,6 +140,71 @@ public class GameManager : MonoBehaviour
         UImanager.Instance.MainCharacter.sprite = currentdata.characterSprite;
     }
 
+    /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
+    public void OnEnemyKilled()
+    {
+        if (isBossStage)
+        {
+            isBossStage = false;
+            currentKillCount = 0;
+            currentPoint += enemy.currentKillPoint;
+
+            if(UImanager.Instance != null)
+            {
+                UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+                UImanager.Instance.DoPointTextEffect(Color.gold, 1.5f);
+                UImanager.Instance.ToggleBossTimerUI(false);
+            }
+            SpawnRandomEnemy();
+        }
+        else
+        {
+            currentKillCount++;
+            currentPoint += enemy.currentKillPoint;  
+
+            if(UImanager.Instance != null)
+            {
+                UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+                UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
+            }
+
+            if (currentKillCount >= killCountToBoss) SpawnBoss();
+            else SpawnRandomEnemy();
+        }
+    }
+
+    /// <summary> 보스전 시작 </summary>
+    private void SpawnBoss()
+    {
+        isBossStage = true;
+        currentBossTimer = bossTimeLimit;
+        TimerSlider.maxValue = bossTimeLimit;
+        TimerSlider.value = currentBossTimer;
+        enemy.InitEnemy(bossData);
+
+        if (UImanager.Instance != null)
+            UImanager.Instance.ToggleBossTimerUI(true);
+    }
+
+    /// <summary> 보스전 실패 시 받는 패널티 </summary>
+    private void OnBossFail()
+    {
+        isBossStage = false;
+        currentKillCount = 0;
+
+        // 포인트가 0 이하로 떨어지는 것을 방지
+        currentPoint = Mathf.Max(0,currentPoint - bossFailPenalty);
+
+        if(UImanager.Instance != null)
+        {
+            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+            UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
+            UImanager.Instance.ToggleBossTimerUI(false);
+        }
+
+        Debug.Log("보스전 실패! 포인트를 잃었습니다.");
+        SpawnRandomEnemy();
+    }
     /// <summary> 적을 랜덤으로 소환하는 함수로 randomData라는 인수(랜덤으로 나온 적 데이터)를 InitEnemy 함수에 전달해서 호출 </summary>
     public void SpawnRandomEnemy()
     {
