@@ -92,7 +92,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void ResetAllCharacterData()
+    public void ResetAllCharacterData()
     {
         if (allCharacters == null) return;
 

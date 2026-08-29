@@ -53,8 +53,9 @@ public class UImanager : MonoBehaviour
 
     public void SelectStarterCharacter(CharacterData data)
     {
+        ShopManager.Instance.ResetAllCharacterData();
         data.isUnlocked = true;
-        data.defaultIsUnlocked = true;
+        //data.defaultIsUnlocked = true;
         GameManager.Instance.currentCharacter = data; 
         GameManager.Instance.UpdateCharacterStage();
 
