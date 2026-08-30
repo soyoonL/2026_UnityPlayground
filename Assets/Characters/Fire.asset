@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Charmander
-  icon: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
+  icon: {fileID: 7298579586776190195, guid: 8d06881ee4fb11449b82d0905a6f23a3, type: 3}
   price: 200
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
-  isUnlocked: 0
-  currentStage: 0
+  isUnlocked: 1
+  currentStage: 4
   evolutionStages:
   - stageName: 1
-    characterSprite: {fileID: -2662595753199551468, guid: 54575dabe4334304c81189ff928f2e44, type: 3}
+    characterSprite: {fileID: 7298579586776190195, guid: 9951f4f4b802f4f4db2da6c9e6452b44, type: 3}
     damage: 10
     requiredPoint: 20
   - stageName: 2

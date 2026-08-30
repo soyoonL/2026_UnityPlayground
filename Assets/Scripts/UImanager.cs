@@ -16,6 +16,7 @@ public class UImanager : MonoBehaviour
     public GameObject huntPanel;
     public GameObject shopPanel;
     public GameObject selectCharacterPanel;
+    public GameObject GlovalUI;
 
     [Header("메인화면 버튼 관리")]
     public Image MainCharacter;
@@ -77,6 +78,7 @@ public class UImanager : MonoBehaviour
                 );
         if (selectCharacterPanel != null) selectCharacterPanel.SetActive(false);
         if (mainPanel != null) mainPanel.SetActive(true);
+        if (GlovalUI != null) GlovalUI.SetActive(true);
         if (ShopManager.Instance != null) ShopManager.Instance.RefreshAllCards();
         
     }
@@ -119,7 +121,7 @@ public class UImanager : MonoBehaviour
 
     public void ResetText(int currentPoint, int requiredPoint, bool isMaxStage)
     {
-        pointCountText.text = currentPoint.ToString() + "Points";
+        pointCountText.text = currentPoint.ToString();
 
         if (!isMaxStage)
         {

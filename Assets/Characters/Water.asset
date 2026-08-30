@@ -17,11 +17,11 @@ MonoBehaviour:
   price: 400
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 6412261967305347050, guid: f8ea657ed0b738c40973475bf26ad6f7, type: 3}
-  isUnlocked: 0
-  currentStage: 0
+  isUnlocked: 1
+  currentStage: 1
   evolutionStages:
   - stageName: 1
-    characterSprite: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
+    characterSprite: {fileID: -1819845155079437447, guid: e66b32a1e5373a94f9f6ad63e791c3a1, type: 3}
     damage: 25
     requiredPoint: 30
   - stageName: 2
