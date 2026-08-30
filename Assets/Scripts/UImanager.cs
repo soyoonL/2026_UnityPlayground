@@ -23,6 +23,11 @@ public class UImanager : MonoBehaviour
     [Header("보스전 UI")]
     public GameObject bossTimerGroup;
     public TextMeshProUGUI bossTimerText;
+    public Slider TimerSlider;
+
+    [Header("일반 적 UI")]
+    public Slider hpSlider; // 적 체력바 UI 저장
+    public Image enemyImage; // 적 이미지 저장하고, 적이 사망 시 랜덤한 적의 이미지로 교체하는 데 사용
 
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;

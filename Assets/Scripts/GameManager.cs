@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     public int killCountToBoss = 10;  // 보스 등장에 필요한 일반 적 처치 수
     public float bossTimeLimit = 30f; // 제한시간(초)
     public int bossFailPenalty = 100; // 실패 시 차감될 포인트
-    public Slider TimerSlider;
 
     private int currentKillCount = 0;
     private bool isBossStage = false;
@@ -84,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (isBossStage)
         {
             currentBossTimer -= Time.deltaTime;
-            TimerSlider.value = currentBossTimer;
+            UImanager.Instance.TimerSlider.value = currentBossTimer;
 
             if (UImanager.Instance != null) 
                 UImanager.Instance.UpdateBossTimer(currentBossTimer);
@@ -178,8 +177,8 @@ public class GameManager : MonoBehaviour
     {
         isBossStage = true;
         currentBossTimer = bossTimeLimit;
-        TimerSlider.maxValue = bossTimeLimit;
-        TimerSlider.value = currentBossTimer;
+        UImanager.Instance.TimerSlider.maxValue = bossTimeLimit;
+        UImanager.Instance.TimerSlider.value = currentBossTimer;
         enemy.InitEnemy(bossData);
 
         if (UImanager.Instance != null)

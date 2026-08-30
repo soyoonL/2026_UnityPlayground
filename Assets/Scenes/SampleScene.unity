@@ -569,7 +569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &114114033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -907,7 +907,7 @@ RectTransform:
   m_Father: {fileID: 1525166502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1439,7 +1439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &509968089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2034,7 +2034,6 @@ MonoBehaviour:
   killCountToBoss: 15
   bossTimeLimit: 30
   bossFailPenalty: 70
-  TimerSlider: {fileID: 1452029726}
 --- !u!4 &805982387
 Transform:
   m_ObjectHideFlags: 0
@@ -2357,7 +2356,7 @@ RectTransform:
   m_Father: {fileID: 1141782244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2754,7 +2753,7 @@ RectTransform:
   m_Father: {fileID: 1748104288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4378,8 +4377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3265692dc4a2dce4e84be6c7578f588f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  hpSlider: {fileID: 12819809}
-  enemyImage: {fileID: 1300788839}
   currentHp: 0
   currentKillPoint: 0
 --- !u!212 &1531482062
@@ -4785,6 +4782,9 @@ MonoBehaviour:
   MainCharacter: {fileID: 1288048670}
   bossTimerGroup: {fileID: 509968088}
   bossTimerText: {fileID: 1206511677}
+  TimerSlider: {fileID: 1452029726}
+  hpSlider: {fileID: 12819809}
+  enemyImage: {fileID: 1300788839}
 --- !u!4 &1885067694
 Transform:
   m_ObjectHideFlags: 0

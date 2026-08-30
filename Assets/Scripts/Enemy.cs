@@ -12,9 +12,6 @@ public struct EnemyData // 적 관련 데이터
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] Slider hpSlider; // 적 체력바 UI 저장
-    [SerializeField] Image enemyImage; // 적 이미지 저장하고, 적이 사망 시 랜덤한 적의 이미지로 교체하는 데 사용
-
     public float currentHp; // 적의 현재 체력
     public int currentKillPoint; // 현재 적 처치 포인트
 
@@ -27,9 +24,9 @@ public class Enemy : MonoBehaviour
         currentHp = data.maxHp;
         currentKillPoint = data.killPoint;
 
-        hpSlider.maxValue = data.maxHp;
-        hpSlider.value = currentHp;
-        enemyImage.sprite = data.enemySprite;
+        UImanager.Instance.hpSlider.maxValue = data.maxHp;
+        UImanager.Instance.hpSlider.value = currentHp;
+        UImanager.Instance.enemyImage.sprite = data.enemySprite;
     }
 
     /// <summary>
@@ -39,7 +36,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHp -= damage;
-        hpSlider.value = currentHp;
+        UImanager.Instance.hpSlider.value = currentHp;
 
         if (currentHp <= 0)
         {
