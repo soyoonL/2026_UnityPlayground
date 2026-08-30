@@ -66,6 +66,7 @@ public class UImanager : MonoBehaviour
         ShopManager.Instance.ResetAllCharacterData();
         data.isUnlocked = true;
         //data.defaultIsUnlocked = true;
+        ShopManager.Instance.SortCards();
         GameManager.Instance.currentCharacter = data; 
         GameManager.Instance.UpdateCharacterStage();
 

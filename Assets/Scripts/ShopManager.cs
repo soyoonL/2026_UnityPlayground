@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -55,13 +56,14 @@ public class ShopManager : MonoBehaviour
         data.isUnlocked = true;
 
         RefreshAllCards();
+        SortCards();
 
-        if(UImanager.Instance != null)
+        if (UImanager.Instance != null)
         {
             UImanager.Instance.ResetText(GameManager.Instance.currentPoint,
                 GameManager.Instance.CurrentRequiredPoint,
                 GameManager.Instance.IsMaxStage
-            ); // ResetText 함수가 3개의 매개변수를 받도록 작성되어서 에러 방지를 위해 변경되지 않는 값도 일단 넣어둠)
+            ); // ResetText 함수가 3개의 매개변수를 받도록 작성되어서 에러 방지를 위해 변경되지 않는 값도 일단 넣어둠
         }
     }
 
@@ -90,6 +92,22 @@ public class ShopManager : MonoBehaviour
         {
             card.UpdateState();
         }
+    }
+
+    /// <summary> 카드 구매 완료 시 실행할 정렬 함수 </summary>
+    public void SortCards()
+    {
+        // 구매된 (isUnlocked == true) 카드가 앞으로 오도록 정렬
+        var sortedCards = spawnedCards
+            .OrderByDescending(cardPrefab => cardPrefab.cardData.isUnlocked)
+            .ToList();
+
+        // 정렬된 순서대로 하이랄키 순서(Sibling Index) 변경
+        for (int i = 0; i < sortedCards.Count; i++)
+        {
+            sortedCards[i].transform.SetSiblingIndex(i);
+        }
+
     }
 
     public void ResetAllCharacterData()

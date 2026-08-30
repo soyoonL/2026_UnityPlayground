@@ -11,7 +11,7 @@ public class ShopCardUI : MonoBehaviour
     [SerializeField] private Button actionButton; // 구매/장착 버튼
     [SerializeField] private TextMeshProUGUI buttonText; // 버튼 내부 Text
 
-    private CharacterData cardData; // 넘겨받은 캐릭터 데이터를 저장할 변수
+    public CharacterData cardData; // 넘겨받은 캐릭터 데이터를 저장할 변수
 
     /// <summary> ShopManager에서 카드를 생성할 때 데이터를 채워주는 함수 </summary>
     public void SetUpCard(CharacterData data)
