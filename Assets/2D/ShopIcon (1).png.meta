@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54575dabe4334304c81189ff928f2e44
+guid: 6484bfd23f38c6e48ba331e9582fe31a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2662595753199551468
-    second: "\uD30C\uC774\uB9AC 1_0"
+      213: 1678307387293118976
+    second: ShopIcon (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD30C\uC774\uB9AC 1_0"
+      name: ShopIcon (1)_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 304
-        height: 342
+        x: 0
+        y: 16
+        width: 274
+        height: 278
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41cb31ef44f8c0bd0800000000000000
-      internalID: -2662595753199551468
+      spriteID: 002358b3dab8a4710800000000000000
+      internalID: 1678307387293118976
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uD30C\uC774\uB9AC 1_0": -2662595753199551468
+      ShopIcon (1)_0: 1678307387293118976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
