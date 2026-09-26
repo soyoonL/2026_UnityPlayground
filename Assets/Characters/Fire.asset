@@ -40,3 +40,4 @@ MonoBehaviour:
     characterSprite: {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
     damage: 90
     requiredPoint: 120
+  shootSfxType: 1
