@@ -50,6 +50,7 @@ public class Projectile : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
+            AudioManager.Instance.PlaySFX(SFXType.Hit, true);
             ReleaseToPool();
         }
     }

@@ -26,6 +26,9 @@ public class CharacterData : ScriptableObject
     [Header("진화 데이터")]
     public EvolutionData[] evolutionStages;
 
+    [Header("오디오 설정")]
+    public SFXType shootSfxType; // 캐릭터 고유 발사 음원 타입 선택
+
     public void ResetData()
     {
         isUnlocked = defaultIsUnlocked;

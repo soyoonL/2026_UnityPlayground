@@ -107,7 +107,9 @@ public class GameManager : MonoBehaviour
                 UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
                 UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
             }
-           
+
+            AudioManager.Instance.PlaySFX(SFXType.Upgrade);
+
         }
     }
 
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
         if (isBossStage)
         {
             isBossStage = false;
+            AudioManager.Instance.PlayBGM(BGMType.Hunt);
             currentKillCount = 0;
             currentPoint += enemy.currentKillPoint;
 
@@ -180,6 +183,7 @@ public class GameManager : MonoBehaviour
         UImanager.Instance.TimerSlider.maxValue = bossTimeLimit;
         UImanager.Instance.TimerSlider.value = currentBossTimer;
         enemy.InitEnemy(bossData);
+        AudioManager.Instance.PlayBGM(BGMType.Boss);
 
         if (UImanager.Instance != null)
             UImanager.Instance.ToggleBossTimerUI(true);
@@ -202,6 +206,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("보스전 실패! 포인트를 잃었습니다.");
+        AudioManager.Instance.PlayBGM(BGMType.Hunt);
         SpawnRandomEnemy();
     }
     /// <summary> 적을 랜덤으로 소환하는 함수로 randomData라는 인수(랜덤으로 나온 적 데이터)를 InitEnemy 함수에 전달해서 호출 </summary>

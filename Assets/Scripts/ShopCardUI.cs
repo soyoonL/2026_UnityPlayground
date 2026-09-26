@@ -49,7 +49,7 @@ public class ShopCardUI : MonoBehaviour
         }
         else // 둘다 아니면
         {
-            buttonText.text = "Rocked";
+            buttonText.text = "Locked";
             actionButton.interactable = true;
         }
     }

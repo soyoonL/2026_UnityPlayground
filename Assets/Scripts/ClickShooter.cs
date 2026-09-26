@@ -60,7 +60,9 @@ public class ClickShooter : MonoBehaviour
         bullet.transform.position = spawnPoint.position; // 발사체가 생성되는 위치
 
         int currentDamage = GameManager.Instance.CurrentDamage; // 발사체의 데미지
-        bullet.SetTarget(targetEnemy,currentDamage); 
+        bullet.SetTarget(targetEnemy,currentDamage);
+
+        AudioManager.Instance.PlaySFX(currentCharacter.shootSfxType, true);
     }
 
 }

@@ -49,11 +49,13 @@ public class ShopManager : MonoBehaviour
         if(GameManager.Instance.currentPoint < data.price)
         {
             Debug.Log("포인트 부족합니다");
+            AudioManager.Instance.PlaySFX(SFXType.EquipFail);
             return;
         }
 
         GameManager.Instance.currentPoint -= data.price;
         data.isUnlocked = true;
+        AudioManager.Instance.PlaySFX(SFXType.Equip);
 
         RefreshAllCards();
         SortCards();

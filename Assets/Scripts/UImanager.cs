@@ -53,6 +53,8 @@ public class UImanager : MonoBehaviour
     {
         mainPanel.SetActive(true);
         huntPanel.SetActive(false);
+        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
+        AudioManager.Instance.PlayBGM(BGMType.Main);
 
     }
 
@@ -78,6 +80,7 @@ public class UImanager : MonoBehaviour
                 );
         if (selectCharacterPanel != null) selectCharacterPanel.SetActive(false);
         if (mainPanel != null) mainPanel.SetActive(true);
+        AudioManager.Instance.PlayBGM(BGMType.Main);
         if (GlovalUI != null) GlovalUI.SetActive(true);
         if (ShopManager.Instance != null) ShopManager.Instance.RefreshAllCards();
         
@@ -88,7 +91,8 @@ public class UImanager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         huntPanel.SetActive(true);
-       
+        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
+        AudioManager.Instance.PlayBGM(BGMType.Hunt);
     }
 
     public void OpenShopPanel()
@@ -96,14 +100,17 @@ public class UImanager : MonoBehaviour
         shopPanel.SetActive(true);
         mainPanel.SetActive(false);
         //huntPanel.SetActive(false);
-       
+        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
+        AudioManager.Instance.PlayBGM(BGMType.Shop);
     }
     public void CloseShopPanel()
     {
         shopPanel.SetActive(false);
         mainPanel.SetActive(true);
         //huntPanel.SetActive(false);
-       
+        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
+        AudioManager.Instance.PlayBGM(BGMType.Main);
+
     }
 
     /// <summary> 보스전 UI 활성화 </summary>
