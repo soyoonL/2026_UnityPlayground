@@ -5,7 +5,8 @@ public struct EvolutionData
 {
     public string stageName;
     public Sprite characterSprite;
-    public RuntimeAnimatorController animatorController;
+    public AnimationClip idleClip;   // 이 캐릭터/진화단계의 Idle 클립
+    public AnimationClip cheerClip;  // 이 캐릭터/진화단계의 Cheer 클립
     public int damage;
     public int requiredPoint;
 }

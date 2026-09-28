@@ -12,24 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: Squirtle
-  icon: {fileID: -1819845155079437447, guid: d1ed7a3acc664794d9e4d1099abc6dd6, type: 3}
+  characterName: Water
+  icon: {fileID: -8254840711607403880, guid: e24dcfd8b6ddb574080f33a5c2fefb94, type: 3}
   price: 400
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 6412261967305347050, guid: f8ea657ed0b738c40973475bf26ad6f7, type: 3}
-  isUnlocked: 1
-  currentStage: 1
+  isUnlocked: 0
+  currentStage: 0
   evolutionStages:
   - stageName: 1
-    characterSprite: {fileID: -1819845155079437447, guid: e66b32a1e5373a94f9f6ad63e791c3a1, type: 3}
+    characterSprite: {fileID: -8254840711607403880, guid: e24dcfd8b6ddb574080f33a5c2fefb94, type: 3}
+    idleClip: {fileID: 7400000, guid: acfb2099693d6e648ba0df6ff5f0177f, type: 2}
+    cheerClip: {fileID: 7400000, guid: 35558170951cbb045b7f00f32998336f, type: 2}
     damage: 25
     requiredPoint: 30
   - stageName: 2
-    characterSprite: {fileID: 3292557865119310245, guid: c4201d5859f70af45be4c7b8e06b1475, type: 3}
+    characterSprite: {fileID: 7580037325354573864, guid: e9f725f150b6b774fb245782a5974538, type: 3}
+    idleClip: {fileID: 7400000, guid: ea272e84d15e2e44b8f6128874dc30a0, type: 2}
+    cheerClip: {fileID: 7400000, guid: 4bbf5bce292e336439ea3f582edb05a4, type: 2}
     damage: 45
     requiredPoint: 50
   - stageName: 3
-    characterSprite: {fileID: -1342398961456278623, guid: 4b0cc09860574564ba860c0a9106206f, type: 3}
+    characterSprite: {fileID: -5234523595380999078, guid: 25330c3264e5a47409918e60d69c44d4, type: 3}
+    idleClip: {fileID: 7400000, guid: 3bf39f0aadd12304da687d9964bc8aeb, type: 2}
+    cheerClip: {fileID: 7400000, guid: cd903bf9ae9c5ea4387658e35b37492f, type: 2}
     damage: 65
     requiredPoint: 70
   shootSfxType: 2

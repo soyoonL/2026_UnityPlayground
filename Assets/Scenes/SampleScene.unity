@@ -3581,7 +3581,7 @@ Animator:
   m_GameObject: {fileID: 1288048667}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc3583e098b4b4e4ab5c3e67699d9f1c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5018,6 +5018,7 @@ MonoBehaviour:
   GlovalUI: {fileID: 1886983552}
   MainCharacter: {fileID: 1288048670}
   mainCharacterAnimator: {fileID: 1288048672}
+  baseController: {fileID: 9100000, guid: bc3583e098b4b4e4ab5c3e67699d9f1c, type: 2}
   bossTimerGroup: {fileID: 509968088}
   bossTimerText: {fileID: 1206511677}
   TimerSlider: {fileID: 1452029726}

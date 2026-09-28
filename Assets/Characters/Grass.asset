@@ -12,24 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
   m_Name: Grass
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: Chicorita
-  icon: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
+  characterName: Grass
+  icon: {fileID: 7864393829244968917, guid: 1216d07bcab8f054ca69162792df1102, type: 3}
   price: 300
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 3388756679424333936, guid: 8d0bd42db105eab478ca350eafdfa05d, type: 3}
-  isUnlocked: 0
-  currentStage: 0
+  isUnlocked: 1
+  currentStage: 2
   evolutionStages:
   - stageName: 1
-    characterSprite: {fileID: -7349248783657926721, guid: 8f7bc37683546a247b332a78f73b194d, type: 3}
+    characterSprite: {fileID: 7864393829244968917, guid: 1216d07bcab8f054ca69162792df1102, type: 3}
+    idleClip: {fileID: 7400000, guid: 35d8e4b21feb2f442b272b7a5fd4339a, type: 2}
+    cheerClip: {fileID: 7400000, guid: 7644fa18f0b1aa14a95cfbe529d1729b, type: 2}
     damage: 30
     requiredPoint: 60
   - stageName: 2
-    characterSprite: {fileID: -5691275476582955946, guid: 45791c88c51d66345bbf9faa95c38a59, type: 3}
+    characterSprite: {fileID: -913631019410706834, guid: 3b9fde9a899eb4745911b376f16c09e5, type: 3}
+    idleClip: {fileID: 7400000, guid: ac38f51fd184ffb4eb34011cbdef1ba2, type: 2}
+    cheerClip: {fileID: 7400000, guid: 3ecd7533117c64e409b79b8f35a184c6, type: 2}
     damage: 50
     requiredPoint: 100
   - stageName: 3
-    characterSprite: {fileID: -5319125468221776351, guid: 85d5cf3a5d521314887ad0990d98da0a, type: 3}
+    characterSprite: {fileID: 5511384177028758445, guid: 1f0dfe53334669c48a52e7514ed149ba, type: 3}
+    idleClip: {fileID: 7400000, guid: 11b2ffa1c5638f64aaed00bc528a7d13, type: 2}
+    cheerClip: {fileID: 7400000, guid: 09ddd17aef0b58b468fe04cf6d7af8ef, type: 2}
     damage: 70
     requiredPoint: 150
   shootSfxType: 3

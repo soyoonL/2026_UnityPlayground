@@ -18,10 +18,12 @@ public class UImanager : MonoBehaviour
     public GameObject selectCharacterPanel;
     public GameObject GlovalUI;
 
-    [Header("메인화면 버튼 관리")]
+    [Header("메인화면 캐릭터 & 애니메이션")]
     public Image MainCharacter;
-    public Animator mainCharacterAnimator;
+    public Animator mainCharacterAnimator; // 하나로 통합 사용
+    [SerializeField] private RuntimeAnimatorController baseController; // 베이스 애니메이터 컨트롤러
 
+    private AnimatorOverrideController overrideController;
     [Header("보스전 UI")]
     public GameObject bossTimerGroup;
     public TextMeshProUGUI bossTimerText;
@@ -33,7 +35,6 @@ public class UImanager : MonoBehaviour
 
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
-    //static readonly int CheerHash = Animation.StringToHash("Cheer");
 
     private void Awake()
     {
@@ -42,7 +43,13 @@ public class UImanager : MonoBehaviour
         else Destroy(gameObject);
 
         if (pointCountText != null) ogPointTextScale = pointCountText.transform.localScale;// 원래 텍스트의 크기를 담아두는 변수
-        
+
+        if (mainCharacterAnimator != null && baseController != null)
+        {
+            overrideController = new AnimatorOverrideController(baseController);
+            mainCharacterAnimator.runtimeAnimatorController = overrideController;
+        }
+
     }
 
     private void Start()
@@ -179,20 +186,24 @@ public class UImanager : MonoBehaviour
     /// <summary> 메인 캐릭터의 애니메이션과 스프라이트를 진화 단계에 맞게 교체 </summary>
     public void SetMainCharacterVisual(EvolutionData data)
     {
-        if (mainCharacterAnimator != null)
-            mainCharacterAnimator.runtimeAnimatorController = data.animatorController;
+        // 1. 베이스 컨트롤러의 원본 클립을 현재 진화 단계의 클립으로 교체(Override)
+        if (overrideController != null)
+        {
+            if (data.idleClip != null) overrideController["Idle"] = data.idleClip;
+            if (data.cheerClip != null) overrideController["Cheer"] = data.cheerClip;
+        }
 
+        // 2. 캐릭터 이미지 교체
         if (MainCharacter != null)
             MainCharacter.sprite = data.characterSprite;
     }
 
-    /// <summary> 환호 애니메이션 재생 (컨트롤러가 없거나 화면이 꺼져 있으면 무시) </summary>
+    /// <summary> 환호 애니메이션 재생 </summary>
     public void PlayMainCharacterCheer()
     {
-        if (mainCharacterAnimator == null
-            || mainCharacterAnimator.runtimeAnimatorController == null
-            || !mainCharacterAnimator.isActiveAndEnabled) return;
+        if (mainCharacterAnimator == null || !mainCharacterAnimator.isActiveAndEnabled) return;
 
-        mainCharacterAnimator.SetTrigger("CheerHash");
+        // "Cheer" 트리거 파라미터 호출
+        mainCharacterAnimator.SetTrigger("Cheer");
     }
 }

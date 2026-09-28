@@ -12,37 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b2a426ec34fd4498fd137b747dc4ce, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: Charmander
-  icon: {fileID: 7298579586776190195, guid: 8d06881ee4fb11449b82d0905a6f23a3, type: 3}
+  characterName: Fire
+  icon: {fileID: -7505636142162967766, guid: 28bc50621ec98f44cae583efe48df271, type: 3}
   price: 200
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
-  isUnlocked: 0
+  isUnlocked: 1
   currentStage: 0
   evolutionStages:
   - stageName: 1
-    characterSprite: {fileID: 7298579586776190195, guid: 9951f4f4b802f4f4db2da6c9e6452b44, type: 3}
-    animatorController: {fileID: 9100000, guid: 7c68962204916d443be7c811574e5c5f, type: 2}
+    characterSprite: {fileID: -7505636142162967766, guid: 28bc50621ec98f44cae583efe48df271, type: 3}
+    idleClip: {fileID: 7400000, guid: 8e4db5c6531d4f549a8d622afc9c2e5e, type: 2}
+    cheerClip: {fileID: 7400000, guid: 8b97369a6dd90f14491b96a76319b722, type: 2}
     damage: 10
     requiredPoint: 20
   - stageName: 2
-    characterSprite: {fileID: -3895947494790806695, guid: b66c48489e8f72b43a8e8ba1c09ee3fd, type: 3}
-    animatorController: {fileID: 0}
+    characterSprite: {fileID: -9221901442962494105, guid: 6341d55c608918d4bb2c5ae007bca850, type: 3}
+    idleClip: {fileID: 7400000, guid: f8e58711d0648204cade0d104b8f6731, type: 2}
+    cheerClip: {fileID: 7400000, guid: 3f0100044a521a74288c766a6611ba95, type: 2}
     damage: 30
     requiredPoint: 50
   - stageName: 3
-    characterSprite: {fileID: -6717909169813735490, guid: 48bad6cd581a1944e8f5cfa9f367e273, type: 3}
-    animatorController: {fileID: 0}
+    characterSprite: {fileID: 224006341626714019, guid: 7a38f46cae957f1409e53dcb08f3bf36, type: 3}
+    idleClip: {fileID: 7400000, guid: 5b231715cace886488eea0df7acc22a7, type: 2}
+    cheerClip: {fileID: 7400000, guid: b5eee509a5bb2f54ebf2e419d4e8c49d, type: 2}
     damage: 50
     requiredPoint: 70
-  - stageName: 4
-    characterSprite: {fileID: -1442730041863635797, guid: 02fd3bc8fd09ea44eb68f916c5ae6fe7, type: 3}
-    animatorController: {fileID: 0}
-    damage: 70
-    requiredPoint: 100
-  - stageName: 5
-    characterSprite: {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
-    animatorController: {fileID: 0}
-    damage: 90
-    requiredPoint: 120
   shootSfxType: 1

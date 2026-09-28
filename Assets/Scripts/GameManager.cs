@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {  get; private set; }
 
-    /// <summary> 캐릭터의 진화 단계에 필요한 정보를 저장하는 배열 </summary>
+    /// <summary> 현재 캐릭터의 에셋 </summary>
     [Header("현재 선택된 캐릭터 Data")]
-    public CharacterData currentCharacter; // 기존 evolutionDatabase 대신 현재 캐릭터 에셋을 참조
+    public CharacterData currentCharacter; 
 
-    /// <summary> 적과 관련된 정보를 저장하는 배열 </summary>
+    /// <summary> 적의 데이터를 저장하는 배열 </summary>
     [Header("적 데이터 리스트")]
     public EnemyData[] enemyDatabase;
 
@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary> 캐릭터가 없거나 마지막 진화 단계면 true </summary>
+    /// <summary> 캐릭터가 마지막 진화 단계면 true </summary>
     public bool IsMaxStage => currentCharacter != null
         && currentCharacter.evolutionStages != null
         && currentCharacter.currentStage >= currentCharacter.evolutionStages.Length - 1;
 
-    /// <summary> 캐릭터가 없거나 마지막 진화 단계이면 0, 그 외에는 다음 요구 포인트 반환 </summary>
+    /// <summary> 마지막 진화 단계이면 0, 그 외에는 다음 요구 포인트 반환 </summary>
     public int CurrentRequiredPoint
     {
         get
@@ -101,15 +101,14 @@ public class GameManager : MonoBehaviour
         if (!IsMaxStage && currentPoint >= CurrentRequiredPoint)
         {
             Evolution();
+            AudioManager.Instance.PlaySFX(SFXType.Upgrade);
 
-            if(UImanager.Instance != null)
+            if (UImanager.Instance != null)
             {
                 UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
                 UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
-                UImanager.Instance.PlayMainCharacterCheer(); // 추가
+                //UImanager.Instance.PlayMainCharacterCheer(); // 추가
             }
-
-            AudioManager.Instance.PlaySFX(SFXType.Upgrade);
 
         }
     }
