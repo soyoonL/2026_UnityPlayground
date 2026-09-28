@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
             {
                 UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
                 UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
+                UImanager.Instance.PlayMainCharacterCheer(); // 추가
             }
 
             AudioManager.Instance.PlaySFX(SFXType.Upgrade);
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
         characterImage.enabled = true;
         EvolutionData currentdata = currentCharacter.evolutionStages[currentCharacter.currentStage];
         characterImage.sprite = currentdata.characterSprite;
-        UImanager.Instance.MainCharacter.sprite = currentdata.characterSprite;
+        UImanager.Instance.SetMainCharacterVisual(currentdata); // 변경: 기존 MainCharacter.sprite = ... 대체
     }
 
     /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>

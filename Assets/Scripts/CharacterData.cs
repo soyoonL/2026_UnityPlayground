@@ -5,6 +5,7 @@ public struct EvolutionData
 {
     public string stageName;
     public Sprite characterSprite;
+    public RuntimeAnimatorController animatorController;
     public int damage;
     public int requiredPoint;
 }

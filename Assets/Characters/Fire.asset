@@ -17,27 +17,32 @@ MonoBehaviour:
   price: 200
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 8800523963003114003, guid: d8aba12721c9f5e4bb12cdb94ae3d5ae, type: 3}
-  isUnlocked: 1
-  currentStage: 4
+  isUnlocked: 0
+  currentStage: 0
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: 7298579586776190195, guid: 9951f4f4b802f4f4db2da6c9e6452b44, type: 3}
+    animatorController: {fileID: 9100000, guid: 7c68962204916d443be7c811574e5c5f, type: 2}
     damage: 10
     requiredPoint: 20
   - stageName: 2
     characterSprite: {fileID: -3895947494790806695, guid: b66c48489e8f72b43a8e8ba1c09ee3fd, type: 3}
+    animatorController: {fileID: 0}
     damage: 30
     requiredPoint: 50
   - stageName: 3
     characterSprite: {fileID: -6717909169813735490, guid: 48bad6cd581a1944e8f5cfa9f367e273, type: 3}
+    animatorController: {fileID: 0}
     damage: 50
     requiredPoint: 70
   - stageName: 4
     characterSprite: {fileID: -1442730041863635797, guid: 02fd3bc8fd09ea44eb68f916c5ae6fe7, type: 3}
+    animatorController: {fileID: 0}
     damage: 70
     requiredPoint: 100
   - stageName: 5
     characterSprite: {fileID: 160900024857939088, guid: b2bab9f165ecacd48b82e419162f5c4b, type: 3}
+    animatorController: {fileID: 0}
     damage: 90
     requiredPoint: 120
   shootSfxType: 1

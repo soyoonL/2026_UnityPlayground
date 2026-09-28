@@ -20,6 +20,7 @@ public class UImanager : MonoBehaviour
 
     [Header("메인화면 버튼 관리")]
     public Image MainCharacter;
+    public Animator mainCharacterAnimator;
 
     [Header("보스전 UI")]
     public GameObject bossTimerGroup;
@@ -32,6 +33,7 @@ public class UImanager : MonoBehaviour
 
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
+    //static readonly int CheerHash = Animation.StringToHash("Cheer");
 
     private void Awake()
     {
@@ -172,5 +174,25 @@ public class UImanager : MonoBehaviour
         go.transform.localScale = ogPointTextScale;
         go.color = ogColor;
         textEffectCoroutine = null;
+    }
+
+    /// <summary> 메인 캐릭터의 애니메이션과 스프라이트를 진화 단계에 맞게 교체 </summary>
+    public void SetMainCharacterVisual(EvolutionData data)
+    {
+        if (mainCharacterAnimator != null)
+            mainCharacterAnimator.runtimeAnimatorController = data.animatorController;
+
+        if (MainCharacter != null)
+            MainCharacter.sprite = data.characterSprite;
+    }
+
+    /// <summary> 환호 애니메이션 재생 (컨트롤러가 없거나 화면이 꺼져 있으면 무시) </summary>
+    public void PlayMainCharacterCheer()
+    {
+        if (mainCharacterAnimator == null
+            || mainCharacterAnimator.runtimeAnimatorController == null
+            || !mainCharacterAnimator.isActiveAndEnabled) return;
+
+        mainCharacterAnimator.SetTrigger("CheerHash");
     }
 }

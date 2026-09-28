@@ -40,6 +40,7 @@ public class ShopCardUI : MonoBehaviour
             buttonText.text = "Equipped";
             actionButton.interactable = false;
             priceText.gameObject.SetActive(false);
+            AudioManager.Instance.PlaySFX(SFXType.Equip);
         }
         else if (cardData.isUnlocked) // 일치하진 않지만 해금은 해놓은 상태이면
         {

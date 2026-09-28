@@ -723,7 +723,7 @@ MonoBehaviour:
   - sfxType: 7
     clips:
     - {fileID: 8300000, guid: 79dfd68017237f34188112a7bf1f359c, type: 3}
-  bgmMasterVolume: 1
+  bgmMasterVolume: 0.4
   defaultFadeDuration: 0.5
   sfxMasterVolume: 1
   minPitch: 0.7
@@ -3450,6 +3450,7 @@ GameObject:
   - component: {fileID: 1288048671}
   - component: {fileID: 1288048670}
   - component: {fileID: 1288048669}
+  - component: {fileID: 1288048672}
   m_Layer: 5
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -3519,7 +3520,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1288048670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1885067693}
+        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
+        m_MethodName: PlayMainCharacterCheer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1288048670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3558,6 +3571,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288048667}
   m_CullTransparentMesh: 1
+--- !u!95 &1288048672
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288048667}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1300788837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,6 +5017,7 @@ MonoBehaviour:
   selectCharacterPanel: {fileID: 1640974028}
   GlovalUI: {fileID: 1886983552}
   MainCharacter: {fileID: 1288048670}
+  mainCharacterAnimator: {fileID: 1288048672}
   bossTimerGroup: {fileID: 509968088}
   bossTimerText: {fileID: 1206511677}
   TimerSlider: {fileID: 1452029726}
