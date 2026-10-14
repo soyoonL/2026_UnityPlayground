@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72c66eceeb50ed942831bb0406249445
+guid: 2b5379495887be344a6ef5059b300170
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3223762802729880918
-    second: Boss (1)_0
+      213: -4765459246816451678
+    second: enemy1_jelly_knight_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss (1)_0
+      name: enemy1_jelly_knight_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1
-        width: 343
-        height: 431
+        x: 32
+        y: 47
+        width: 396
+        height: 292
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65d05d8503b1dbc20800000000000000
-      internalID: 3223762802729880918
+      spriteID: 2a3a7e14010bdddb0800000000000000
+      internalID: -4765459246816451678
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boss (1)_0: 3223762802729880918
+      enemy1_jelly_knight_0: -4765459246816451678
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

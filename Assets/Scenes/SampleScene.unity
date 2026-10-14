@@ -333,17 +333,17 @@ RectTransform:
   m_GameObject: {fileID: 12819808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.4999999, z: 0}
+  m_LocalScale: {x: 2, y: 3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1630868860}
   - {fileID: 1748104288}
   - {fileID: 693291260}
-  m_Father: {fileID: 1300788838}
+  m_Father: {fileID: 114114033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: 175.00002}
+  m_AnchoredPosition: {x: -349.99994, y: 350}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &22976708
@@ -773,6 +773,7 @@ RectTransform:
   m_Children:
   - {fileID: 1144992268}
   - {fileID: 1475024314}
+  - {fileID: 12819810}
   - {fileID: 1300788838}
   - {fileID: 318634795}
   - {fileID: 579476019}
@@ -2277,15 +2278,15 @@ MonoBehaviour:
   - enemyName: rosa
     maxHp: 50
     killPoint: 10
-    enemySprite: {fileID: 1247301518012690501, guid: dd7e5403d4a19094d98d1c4c9585cecf, type: 3}
+    enemySprite: {fileID: -4765459246816451678, guid: 2b5379495887be344a6ef5059b300170, type: 3}
   - enemyName: Meowth
     maxHp: 100
     killPoint: 5
-    enemySprite: {fileID: 281439887670494261, guid: 6865c4ef2654cf64d889e4d5cc968485, type: 3}
+    enemySprite: {fileID: -2231066331150260477, guid: ba31b299654fdc048bebcd5b5e13b2e2, type: 3}
   - enemyName: Roi
     maxHp: 200
     killPoint: 20
-    enemySprite: {fileID: 4043342025076542264, guid: 5190fb47b4e6ee74da299210687b62e8, type: 3}
+    enemySprite: {fileID: -4391438387010472776, guid: 3b5c0575f831af049a658034168daf59, type: 3}
   enemy: {fileID: 1531482061}
   currentPoint: 100
   characterImage: {fileID: 1475024316}
@@ -2293,7 +2294,7 @@ MonoBehaviour:
     enemyName: Giovanni
     maxHp: 5000
     killPoint: 100
-    enemySprite: {fileID: 3223762802729880918, guid: 72c66eceeb50ed942831bb0406249445, type: 3}
+    enemySprite: {fileID: 7674782581129572315, guid: ac8e15b98d730e747a8c1f4acea2b644, type: 3}
   killCountToBoss: 15
   bossTimeLimit: 30
   bossFailPenalty: 70
@@ -3622,8 +3623,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 12819810}
+  m_Children: []
   m_Father: {fileID: 114114033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}

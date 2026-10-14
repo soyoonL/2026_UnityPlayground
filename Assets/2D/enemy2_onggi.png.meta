@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dd7e5403d4a19094d98d1c4c9585cecf
+guid: ba31b299654fdc048bebcd5b5e13b2e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1247301518012690501
-    second: Sprite_Enemy_0
+      213: -2231066331150260477
+    second: enemy2_onggi_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_Enemy_0
+      name: enemy2_onggi_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 11
-        width: 319
-        height: 423
+        x: 65
+        y: 39
+        width: 349
+        height: 370
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 540b3f44f1e4f4110800000000000000
-      internalID: 1247301518012690501
+      spriteID: 30764751ef8a901e0800000000000000
+      internalID: -2231066331150260477
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sprite_Enemy_0: 1247301518012690501
+      enemy2_onggi_0: -2231066331150260477
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
