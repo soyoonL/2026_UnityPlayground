@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 
 [System.Serializable]
 public struct EnemyData // 적 관련 데이터
@@ -15,10 +15,20 @@ public class Enemy : MonoBehaviour
     public float currentHp; // 적의 현재 체력
     public int currentKillPoint; // 현재 적 처치 포인트
 
+    private Vector3 baseScale;
+    private Coroutine hitRoutine;
+
     /// <summary>
     /// 전달받은 적 데이터를 바탕으로 적의 능력치와 UI를 초기화
     /// </summary>
     /// <param name="data"> 적용할 적 데이터 </param>
+    /// 
+    void Start()
+    {
+        baseScale = UImanager.Instance.enemyImage.transform.localScale;
+    }
+
+
     public void InitEnemy(EnemyData data)
     {
         currentHp = data.maxHp;
@@ -42,5 +52,28 @@ public class Enemy : MonoBehaviour
         {
             GameManager.Instance.OnEnemyKilled();
         }
+
+        if (hitRoutine != null) StopCoroutine(hitRoutine);
+        hitRoutine = StartCoroutine(HitReaction());
+    }
+
+    IEnumerator HitReaction()
+    {
+        var img = UImanager.Instance.enemyImage;
+        Transform t = img.transform;
+        Vector3 squash = Vector3.Scale(baseScale, new Vector3(1.12f, 0.88f, 1f));
+
+        img.color = new Color(1f, 0.55f, 0.55f);
+        t.localScale = squash;
+
+        for (float e = 0; e < 0.12f; e += Time.deltaTime)
+        {
+            t.localScale = Vector3.Lerp(squash, baseScale, e / 0.12f);
+            yield return null;
+        }
+
+        img.color = Color.white;
+        t.localScale = baseScale;
+        hitRoutine = null;
     }
 }
