@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3388756679424333936}
   - component: {fileID: 7914414009144217540}
   - component: {fileID: 8158672938552179136}
+  - component: {fileID: 3277941304845015032}
   m_Layer: 0
   m_Name: GrassProjectile
   m_TagString: Untagged
@@ -28,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4126840682239432556}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1284929786618687988
 SpriteRenderer:
   serializedVersion: 3
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7827892105748504195, guid: a67a900248e9e7d48a8021f054bf076e, type: 3}
+  m_Sprite: {fileID: 6064198536833979995, guid: d551bdc9dbcdb33419cc4cc7bbeabcb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8524a07c81dd047b153123dcec9d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  speed: 10
+  maxLifetime: 5
   damage: 20
+  projectileAnimator: {fileID: 3277941304845015032}
+  hitEffectPrefab: {fileID: 4815724136509818925, guid: d2209d6cc21837c4b939eb639f71e618, type: 3}
 --- !u!61 &7914414009144217540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.11, y: 3.46}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 2.42, y: 3.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -181,3 +186,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &3277941304845015032
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126840682239432556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: a2fdec569b2b8f94e845798336f0b49f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 29893136596760253}
-    m_Position: {x: 410, y: 100, z: 0}
+    m_Position: {x: 310, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hit
+  m_Name: Hit_grass
   serializedVersion: 6
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -65,7 +65,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8de1f4ec4d4aa4f46ac25e0be4915edd, type: 2}
+  m_Motion: {fileID: 7400000, guid: a8b0a21612989ca4680aacd7fe751a55, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
