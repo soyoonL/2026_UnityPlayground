@@ -24,18 +24,24 @@ MonoBehaviour:
     characterSprite: {fileID: -8254840711607403880, guid: e24dcfd8b6ddb574080f33a5c2fefb94, type: 3}
     idleClip: {fileID: 7400000, guid: acfb2099693d6e648ba0df6ff5f0177f, type: 2}
     cheerClip: {fileID: 7400000, guid: 35558170951cbb045b7f00f32998336f, type: 2}
+    attackIdleClip: {fileID: 7400000, guid: 4414d0421762a0a4289496f27c31d374, type: 2}
+    attackClip: {fileID: 7400000, guid: d322479a7c9a6574d923cbeaf238a9a1, type: 2}
     damage: 25
     requiredPoint: 30
   - stageName: 2
     characterSprite: {fileID: 7580037325354573864, guid: e9f725f150b6b774fb245782a5974538, type: 3}
     idleClip: {fileID: 7400000, guid: ea272e84d15e2e44b8f6128874dc30a0, type: 2}
     cheerClip: {fileID: 7400000, guid: 4bbf5bce292e336439ea3f582edb05a4, type: 2}
+    attackIdleClip: {fileID: 7400000, guid: ddefc93961728e6429b14be0a16142bc, type: 2}
+    attackClip: {fileID: 7400000, guid: aed383d6e42c45145bdcbb33835ac201, type: 2}
     damage: 45
     requiredPoint: 50
   - stageName: 3
     characterSprite: {fileID: -5234523595380999078, guid: 25330c3264e5a47409918e60d69c44d4, type: 3}
     idleClip: {fileID: 7400000, guid: 3bf39f0aadd12304da687d9964bc8aeb, type: 2}
     cheerClip: {fileID: 7400000, guid: cd903bf9ae9c5ea4387658e35b37492f, type: 2}
+    attackIdleClip: {fileID: 7400000, guid: e06c7f32f54d78a47986e6216192a2b5, type: 2}
+    attackClip: {fileID: 7400000, guid: 596dd9ba1a67cfc47aea181428934c6f, type: 2}
     damage: 65
     requiredPoint: 70
   shootSfxType: 2
