@@ -24,6 +24,13 @@ public class UImanager : MonoBehaviour
     [SerializeField] private RuntimeAnimatorController baseController; // 베이스 애니메이터 컨트롤러
 
     private AnimatorOverrideController overrideController;
+
+    [Header("전투화면 캐릭터 & 애니메이션")] 
+    public Image HuntCharacter;                     // 전투 화면 캐릭터 이미지
+    public Animator huntCharacterAnimator;          // 전투 화면 애니메이터
+    [SerializeField] private RuntimeAnimatorController huntBaseController; // 전투용 베이스 컨트롤러
+
+    private AnimatorOverrideController huntOverrideController;             // 전투용 오버라이드 컨트롤러
     [Header("보스전 UI")]
     public GameObject bossTimerGroup;
     public TextMeshProUGUI bossTimerText;
@@ -50,6 +57,12 @@ public class UImanager : MonoBehaviour
             mainCharacterAnimator.runtimeAnimatorController = overrideController;
         }
 
+        // 전투 캐릭터 애니메이터 오버라이드 설정
+        if (huntCharacterAnimator != null && huntBaseController != null)
+        {
+            huntOverrideController = new AnimatorOverrideController(huntBaseController);
+            huntCharacterAnimator.runtimeAnimatorController = huntOverrideController;
+        }
     }
 
     private void Start()
@@ -196,6 +209,15 @@ public class UImanager : MonoBehaviour
         // 2. 캐릭터 이미지 교체
         if (MainCharacter != null)
             MainCharacter.sprite = data.characterSprite;
+
+        if (huntOverrideController != null)
+        {
+            if (data.idleClip != null) huntOverrideController["AttackIdle"] = data.attackIdleClip; // 전투용 Idle
+            if (data.attackClip != null) huntOverrideController["Attack"] = data.attackClip; // 전투용 Attack
+        }
+
+        if (HuntCharacter != null)
+            HuntCharacter.sprite = data.characterSprite;
     }
 
     /// <summary> 환호 애니메이션 재생 </summary>
@@ -206,4 +228,5 @@ public class UImanager : MonoBehaviour
         // "Cheer" 트리거 파라미터 호출
         mainCharacterAnimator.SetTrigger("Cheer");
     }
+
 }

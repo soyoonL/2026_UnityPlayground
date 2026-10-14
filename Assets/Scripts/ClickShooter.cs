@@ -52,6 +52,9 @@ public class ClickShooter : MonoBehaviour
         CharacterData currentCharacter = GameManager.Instance.currentCharacter;
         if (currentCharacter == null || currentCharacter.projectilePrefab == null) return;
 
+        if (UImanager.Instance.huntCharacterAnimator == null || !UImanager.Instance.huntCharacterAnimator.isActiveAndEnabled) return;
+        UImanager.Instance.huntCharacterAnimator.Play("Attack",0,0.5f);
+
         Projectile targetPrefab = currentCharacter.projectilePrefab;
         IObjectPool<Projectile> currentPool = GetOrCreatPool(targetPrefab);
 
