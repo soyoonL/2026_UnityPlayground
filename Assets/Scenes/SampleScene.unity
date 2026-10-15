@@ -725,7 +725,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 79dfd68017237f34188112a7bf1f359c, type: 3}
   bgmMasterVolume: 0.4
   defaultFadeDuration: 0.5
-  sfxMasterVolume: 1
+  sfxMasterVolume: 0.8
   minPitch: 0.7
   maxPitch: 1.15
 --- !u!4 &38457973
@@ -4728,7 +4728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1640974029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5050,6 +5050,10 @@ MonoBehaviour:
   TimerSlider: {fileID: 1452029726}
   hpSlider: {fileID: 12819809}
   enemyImage: {fileID: 1300788839}
+  mainCharacterMotions:
+  - Cheer
+  - Surprise
+  - Reaction
 --- !u!4 &1885067694
 Transform:
   m_ObjectHideFlags: 0
@@ -5496,7 +5500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2105531824
 RectTransform:
   m_ObjectHideFlags: 0

@@ -40,6 +40,9 @@ public class UImanager : MonoBehaviour
     public Slider hpSlider; // 적 체력바 UI 저장
     public Image enemyImage; // 적 이미지 저장하고, 적이 사망 시 랜덤한 적의 이미지로 교체하는 데 사용
 
+
+    [SerializeField] private string[] mainCharacterMotions = { "Cheer", "Surprise", "Reaction" };
+    private int lastMotionIndex = -1;
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
 
@@ -204,6 +207,8 @@ public class UImanager : MonoBehaviour
         {
             if (data.idleClip != null) overrideController["Idle"] = data.idleClip;
             if (data.cheerClip != null) overrideController["Cheer"] = data.cheerClip;
+            if (data.surpriseClip != null) overrideController["Surprise"] = data.surpriseClip;
+            if (data.reactionClip != null) overrideController["Reaction"] = data.reactionClip;
         }
 
         // 2. 캐릭터 이미지 교체
@@ -212,7 +217,7 @@ public class UImanager : MonoBehaviour
 
         if (huntOverrideController != null)
         {
-            if (data.idleClip != null) huntOverrideController["AttackIdle"] = data.attackIdleClip; // 전투용 Idle
+            if (data.attackIdleClip != null) huntOverrideController["AttackIdle"] = data.attackIdleClip; // 전투용 Idle
             if (data.attackClip != null) huntOverrideController["Attack"] = data.attackClip; // 전투용 Attack
         }
 
@@ -224,9 +229,19 @@ public class UImanager : MonoBehaviour
     public void PlayMainCharacterCheer()
     {
         if (mainCharacterAnimator == null || !mainCharacterAnimator.isActiveAndEnabled) return;
+        if (mainCharacterMotions == null || mainCharacterMotions.Length == 0) return;
 
-        // "Cheer" 트리거 파라미터 호출
-        mainCharacterAnimator.SetTrigger("Cheer");
+        AnimatorStateInfo info = mainCharacterAnimator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsTag("Motion") && info.normalizedTime < 1f) return;
+
+        int index = Random.Range(0, mainCharacterMotions.Length);
+
+        // 같은 모션이 연속으로 나오지 않게 (모션이 2개 이상일 때만)
+        if (mainCharacterMotions.Length > 1 && index == lastMotionIndex)
+            index = (index + Random.Range(1, mainCharacterMotions.Length)) % mainCharacterMotions.Length;
+
+        lastMotionIndex = index;
+        mainCharacterAnimator.Play(mainCharacterMotions[index], 0, 0f);
     }
 
 }

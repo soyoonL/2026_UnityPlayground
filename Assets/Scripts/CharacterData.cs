@@ -7,6 +7,8 @@ public struct EvolutionData
     public Sprite characterSprite;
     public AnimationClip idleClip;   // 이 캐릭터/진화단계의 Idle 클립
     public AnimationClip cheerClip;  // 이 캐릭터/진화단계의 Cheer 클립
+    public AnimationClip surpriseClip;
+    public AnimationClip reactionClip;
     public AnimationClip attackIdleClip; // 이 캐릭터/진화단계의 AttackIdle 클립
     public AnimationClip attackClip; // 이 캐릭터/진화단계의 Attack 클립
     public int damage;

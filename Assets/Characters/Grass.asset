@@ -17,8 +17,8 @@ MonoBehaviour:
   price: 300
   defaultIsUnlocked: 0
   projectilePrefab: {fileID: 3388756679424333936, guid: 8d0bd42db105eab478ca350eafdfa05d, type: 3}
-  isUnlocked: 0
-  currentStage: 0
+  isUnlocked: 1
+  currentStage: 2
   evolutionStages:
   - stageName: 1
     characterSprite: {fileID: 7864393829244968917, guid: 1216d07bcab8f054ca69162792df1102, type: 3}
@@ -40,8 +40,8 @@ MonoBehaviour:
     characterSprite: {fileID: 5511384177028758445, guid: 1f0dfe53334669c48a52e7514ed149ba, type: 3}
     idleClip: {fileID: 7400000, guid: 11b2ffa1c5638f64aaed00bc528a7d13, type: 2}
     cheerClip: {fileID: 7400000, guid: 09ddd17aef0b58b468fe04cf6d7af8ef, type: 2}
-    attackIdleClip: {fileID: 7400000, guid: 105d2967386f51b4eaee0f2ac052e5c4, type: 2}
-    attackClip: {fileID: 7400000, guid: e06c7f32f54d78a47986e6216192a2b5, type: 2}
+    attackIdleClip: {fileID: 7400000, guid: 83ecc33659f586344bd12342cbbf4445, type: 2}
+    attackClip: {fileID: 7400000, guid: 105d2967386f51b4eaee0f2ac052e5c4, type: 2}
     damage: 70
     requiredPoint: 150
   shootSfxType: 3
