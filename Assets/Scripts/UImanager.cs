@@ -45,6 +45,7 @@ public class UImanager : MonoBehaviour
     private int lastMotionIndex = -1;
     Coroutine textEffectCoroutine;
     Vector3 ogPointTextScale;
+    Color ogPointTextColor;
 
     private void Awake()
     {
@@ -52,7 +53,11 @@ public class UImanager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        if (pointCountText != null) ogPointTextScale = pointCountText.transform.localScale;// 원래 텍스트의 크기를 담아두는 변수
+        if (pointCountText != null)
+        {
+            ogPointTextScale = pointCountText.transform.localScale;
+            ogPointTextColor = pointCountText.color; 
+        }
 
         if (mainCharacterAnimator != null && baseController != null)
         {
@@ -71,16 +76,6 @@ public class UImanager : MonoBehaviour
     private void Start()
     {
         OpenSelectCharacterPanel();
-    }
-
-    /// <summary> 메인 화면으로 이동 </summary>
-    public void OpenMainPanel()
-    {
-        mainPanel.SetActive(true);
-        huntPanel.SetActive(false);
-        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
-        AudioManager.Instance.PlayBGM(BGMType.Main);
-
     }
 
     public void OpenSelectCharacterPanel()
@@ -111,31 +106,37 @@ public class UImanager : MonoBehaviour
         
     }
 
+    /// <summary> target 패널만 켜고 나머지는 끔 </summary>
+    void ShowPanel(GameObject target)
+    {
+        mainPanel.SetActive(mainPanel == target);
+        huntPanel.SetActive(huntPanel == target);
+        shopPanel.SetActive(shopPanel == target);
+    }
+
+    /// <summary> 메인 화면으로 이동 </summary>
+    public void OpenMainPanel()
+    {
+        ShowPanel(mainPanel);
+        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
+        AudioManager.Instance.PlayBGM(BGMType.Main);
+
+    }
+
     /// <summary> 전투 화면으로 이동 </summary>
     public void OpenHuntPanel()
     {
-        mainPanel.SetActive(false);
-        huntPanel.SetActive(true);
+        ShowPanel(huntPanel);
         AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
         AudioManager.Instance.PlayBGM(BGMType.Hunt);
     }
 
     public void OpenShopPanel()
     {
-        shopPanel.SetActive(true);
-        mainPanel.SetActive(false);
+        ShowPanel(shopPanel);
         //huntPanel.SetActive(false);
         AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
         AudioManager.Instance.PlayBGM(BGMType.Shop);
-    }
-    public void CloseShopPanel()
-    {
-        shopPanel.SetActive(false);
-        mainPanel.SetActive(true);
-        //huntPanel.SetActive(false);
-        AudioManager.Instance.PlaySFX(SFXType.ButtonClick);
-        AudioManager.Instance.PlayBGM(BGMType.Main);
-
     }
 
     /// <summary> 보스전 UI 활성화 </summary>
@@ -174,7 +175,7 @@ public class UImanager : MonoBehaviour
     IEnumerator TextEffect(TextMeshProUGUI go, float duration, Color col, float scale)
     {
         Vector3 targetScale = ogPointTextScale * scale;
-        Color ogColor = go.color;
+        Color ogColor = ogPointTextColor;
         duration /= 2;
 
         float t = 0;

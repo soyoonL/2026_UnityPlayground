@@ -1061,7 +1061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickShooter
   spawnPoint: {fileID: 258617350}
   targetEnemy: {fileID: 1531482063}
-  poolContainer: {fileID: 0}
 --- !u!212 &258617349
 SpriteRenderer:
   serializedVersion: 3
@@ -4843,7 +4842,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1885067693}
         m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: CloseShopPanel
+        m_MethodName: OpenMainPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

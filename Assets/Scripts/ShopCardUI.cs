@@ -39,19 +39,20 @@ public class ShopCardUI : MonoBehaviour
         {
             buttonText.text = "Equipped";
             actionButton.interactable = false;
-            priceText.gameObject.SetActive(false);
-            AudioManager.Instance.PlaySFX(SFXType.Equip);
+            if (priceText != null) priceText.gameObject.SetActive(false);
+            
         }
         else if (cardData.isUnlocked) // 일치하진 않지만 해금은 해놓은 상태이면
         {
             buttonText.text = "Equip";
             actionButton.interactable = true;
-            priceText.gameObject.SetActive(false);
+            if (priceText != null) priceText.gameObject.SetActive(false);
         }
         else // 둘다 아니면
         {
             buttonText.text = "Locked";
             actionButton.interactable = true;
+            if (priceText != null) priceText.gameObject.SetActive(true);
         }
     }
 

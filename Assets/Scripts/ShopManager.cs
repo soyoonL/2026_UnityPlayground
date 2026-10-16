@@ -74,6 +74,7 @@ public class ShopManager : MonoBehaviour
     {
         
         GameManager.Instance.currentCharacter = data;
+        AudioManager.Instance.PlaySFX(SFXType.Equip);
         RefreshAllCards();
         GameManager.Instance.UpdateCharacterStage();
         
@@ -118,10 +119,7 @@ public class ShopManager : MonoBehaviour
 
         foreach (CharacterData character in allCharacters)
         {
-            if(cardParent != null)
-            {
-                character.ResetData();
-            }
+            character.ResetData();
         }
     }
 }
