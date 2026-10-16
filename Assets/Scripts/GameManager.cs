@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
 
     [Header("보스전 설정")]
     public EnemyData bossData;        // 인스펙터에서 등록할 보스 데이터  
-    public int killCountToBoss = 10;  // 보스 등장에 필요한 일반 적 처치 수
-    public float bossTimeLimit = 30f; // 제한시간(초)
+    public int minKillCountToBoss = 10; // 보스 등장 최소 처치 수
+    public int maxKillCountToBoss = 15; // 보스 등장 최대 처치 수
+    public float bossTimeLimit = 30f;
     public int bossFailPenalty = 100; // 실패 시 차감될 포인트
 
     private int currentKillCount = 0;
+    private int targetKillCount;
     private bool isBossStage = false;
     private float currentBossTimer = 0f;
 
@@ -73,7 +75,9 @@ public class GameManager : MonoBehaviour
         // 단계에 맞게 캐릭터 이미지 갱신
         UpdateCharacterStage();
         // 첫번째 적 생성
-        SpawnRandomEnemy(); 
+        SpawnRandomEnemy();
+        // 보스전 킬 카운드 초기화
+        ResetKillCount();
 
     }
 
@@ -146,6 +150,13 @@ public class GameManager : MonoBehaviour
         UImanager.Instance.SetMainCharacterVisual(currentdata); // 변경: 기존 MainCharacter.sprite = ... 대체
     }
 
+    /// <summary> 처치 수를 0으로 되돌리고, 다음 보스 등장 처치 수를 랜덤으로 정함 </summary>
+    private void ResetKillCount()
+    {
+        currentKillCount = 0;
+        targetKillCount = Random.Range(minKillCountToBoss, maxKillCountToBoss + 1);
+    }
+
     /// <summary> 적이 죽을 시 호출되는 함수로 현재 포인트에 EnemyKillPoint만큼 더한 다음 ResetText() 호출 </summary>
     public void OnEnemyKilled()
     {
@@ -153,7 +164,7 @@ public class GameManager : MonoBehaviour
         {
             isBossStage = false;
             AudioManager.Instance.PlayBGM(BGMType.Hunt);
-            currentKillCount = 0;
+            ResetKillCount();
             currentPoint += enemy.currentKillPoint;
 
             RefreshPointUI(Color.gold, 1.2f);
@@ -168,7 +179,7 @@ public class GameManager : MonoBehaviour
 
             RefreshPointUI(Color.gold, 1.2f);
 
-            if (currentKillCount >= killCountToBoss) SpawnBoss();
+            if (currentKillCount >= targetKillCount) SpawnBoss();
             else SpawnRandomEnemy();
         }
     }
@@ -176,6 +187,8 @@ public class GameManager : MonoBehaviour
     /// <summary> 보스전 시작 </summary>
     private void SpawnBoss()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BossAppear);
+        float sfxLength = AudioManager.Instance.PlaySFX(SFXType.BossAppear);
         isBossStage = true;
         currentBossTimer = bossTimeLimit;
         if (UImanager.Instance != null)
@@ -185,15 +198,17 @@ public class GameManager : MonoBehaviour
             UImanager.Instance.TimerSlider.value = currentBossTimer;
         }
         enemy.InitEnemy(bossData);
-        AudioManager.Instance.PlayBGM(BGMType.Boss);
+        AudioManager.Instance.PlayBGM(BGMType.Boss,1.3f,sfxLength);
 
     }
 
     /// <summary> 보스전 실패 시 받는 패널티 </summary>
     private void OnBossFail()
     {
+        AudioManager.Instance.PlaySFX(SFXType.BossFail);
+        float sfxLength = AudioManager.Instance.PlaySFX(SFXType.BossFail);
         isBossStage = false;
-        currentKillCount = 0;
+        ResetKillCount();
 
         // 포인트가 0 이하로 떨어지는 것을 방지
         currentPoint = Mathf.Max(0,currentPoint - bossFailPenalty);
@@ -205,7 +220,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("보스전 실패! 포인트를 잃었습니다.");
-        AudioManager.Instance.PlayBGM(BGMType.Hunt);
+        AudioManager.Instance.PlayBGM(BGMType.Hunt,1.3f,sfxLength);
         SpawnRandomEnemy();
     }
     /// <summary> 적을 랜덤으로 소환하는 함수로 randomData라는 인수(랜덤으로 나온 적 데이터)를 InitEnemy 함수에 전달해서 호출 </summary>

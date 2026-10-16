@@ -723,9 +723,15 @@ MonoBehaviour:
   - sfxType: 7
     clips:
     - {fileID: 8300000, guid: 79dfd68017237f34188112a7bf1f359c, type: 3}
+  - sfxType: 8
+    clips:
+    - {fileID: 8300000, guid: 3e3631e2e6a31c14a9c87e44d1427624, type: 3}
+  - sfxType: 9
+    clips:
+    - {fileID: 8300000, guid: 2fc542cada8ef7c4282ae5d2bbad64ac, type: 3}
   bgmMasterVolume: 0.4
   defaultFadeDuration: 0.5
-  sfxMasterVolume: 0.8
+  sfxMasterVolume: 0.9
   minPitch: 0.7
   maxPitch: 1.15
 --- !u!4 &38457973
