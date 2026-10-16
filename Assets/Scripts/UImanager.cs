@@ -87,6 +87,7 @@ public class UImanager : MonoBehaviour
 
     public void SelectStarterCharacter(CharacterData data)
     {
+        AudioManager.Instance.PlaySFX(SFXType.Equip);
         ShopManager.Instance.ResetAllCharacterData();
         data.isUnlocked = true;
         //data.defaultIsUnlocked = true;

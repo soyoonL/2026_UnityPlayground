@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public float bossTimeLimit = 30f;
     public int bossFailPenalty = 100; // 실패 시 차감될 포인트
 
-    private int currentKillCount = 0;
+    public int currentKillCount = 0;
     private int targetKillCount;
     private bool isBossStage = false;
     private float currentBossTimer = 0f;
