@@ -5047,6 +5047,7 @@ MonoBehaviour:
   bossTimerGroup: {fileID: 509968088}
   bossTimerText: {fileID: 1206511677}
   TimerSlider: {fileID: 1452029726}
+  homeButton: {fileID: 579476020}
   hpSlider: {fileID: 12819809}
   enemyImage: {fileID: 1300788839}
   mainCharacterMotions:

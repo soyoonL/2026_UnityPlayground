@@ -35,6 +35,7 @@ public class UImanager : MonoBehaviour
     public GameObject bossTimerGroup;
     public TextMeshProUGUI bossTimerText;
     public Slider TimerSlider;
+    [SerializeField] private Button homeButton;
 
     [Header("일반 적 UI")]
     public Slider hpSlider; // 적 체력바 UI 저장
@@ -143,6 +144,7 @@ public class UImanager : MonoBehaviour
     public void ToggleBossTimerUI(bool isActive)
     {
         if(bossTimerGroup != null) bossTimerGroup.SetActive(isActive);
+        if (homeButton != null) homeButton.interactable = !isActive;
     }
 
     /// <summary> 보스전 타이머 </summary>
