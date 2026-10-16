@@ -82,15 +82,24 @@ public class GameManager : MonoBehaviour
     {
         if (isBossStage)
         {
-            currentBossTimer -= Time.deltaTime;
-            UImanager.Instance.TimerSlider.value = currentBossTimer;
 
-            if (UImanager.Instance != null) 
+            if (UImanager.Instance != null)
+            {
                 UImanager.Instance.UpdateBossTimer(currentBossTimer);
+                currentBossTimer -= Time.deltaTime;
+                UImanager.Instance.TimerSlider.value = currentBossTimer;
+            }
 
             if (currentBossTimer <= 0f)
                 OnBossFail();
         }
+    }
+
+    void RefreshPointUI(Color color, float duration)
+    {
+        if (UImanager.Instance == null) return;
+        UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
+        UImanager.Instance.DoPointTextEffect(color, duration);
     }
 
     /// <summary> Upgrade 버튼을 누를 시 호출되는 함수로 Evolution()과 ResetText(), DoPointTextEffect()를 호출 </summary>
@@ -103,12 +112,7 @@ public class GameManager : MonoBehaviour
             Evolution();
             AudioManager.Instance.PlaySFX(SFXType.Upgrade);
 
-            if (UImanager.Instance != null)
-            {
-                UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-                UImanager.Instance.DoPointTextEffect(Color.red, 0.8f);
-                //UImanager.Instance.PlayMainCharacterCheer(); // 추가
-            }
+            RefreshPointUI(Color.red, 0.8f);
 
         }
     }
@@ -136,7 +140,8 @@ public class GameManager : MonoBehaviour
         }
          
         characterImage.enabled = true;
-        EvolutionData currentdata = currentCharacter.evolutionStages[currentCharacter.currentStage];
+        int stageIndex = Mathf.Min(currentCharacter.currentStage, currentCharacter.evolutionStages.Length - 1);
+        EvolutionData currentdata = currentCharacter.evolutionStages[stageIndex];
         characterImage.sprite = currentdata.characterSprite;
         UImanager.Instance.SetMainCharacterVisual(currentdata); // 변경: 기존 MainCharacter.sprite = ... 대체
     }
@@ -151,24 +156,17 @@ public class GameManager : MonoBehaviour
             currentKillCount = 0;
             currentPoint += enemy.currentKillPoint;
 
-            if(UImanager.Instance != null)
-            {
-                UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-                UImanager.Instance.DoPointTextEffect(Color.gold, 1.5f);
-                UImanager.Instance.ToggleBossTimerUI(false);
-            }
+            RefreshPointUI(Color.gold, 1.2f);
+            UImanager.Instance.ToggleBossTimerUI(false);
+
             SpawnRandomEnemy();
         }
         else
         {
             currentKillCount++;
-            currentPoint += enemy.currentKillPoint;  
+            currentPoint += enemy.currentKillPoint;
 
-            if(UImanager.Instance != null)
-            {
-                UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-                UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
-            }
+            RefreshPointUI(Color.gold, 1.2f);
 
             if (currentKillCount >= killCountToBoss) SpawnBoss();
             else SpawnRandomEnemy();
@@ -180,13 +178,15 @@ public class GameManager : MonoBehaviour
     {
         isBossStage = true;
         currentBossTimer = bossTimeLimit;
-        UImanager.Instance.TimerSlider.maxValue = bossTimeLimit;
-        UImanager.Instance.TimerSlider.value = currentBossTimer;
+        if (UImanager.Instance != null)
+        {
+            UImanager.Instance.ToggleBossTimerUI(true);
+            UImanager.Instance.TimerSlider.maxValue = bossTimeLimit;
+            UImanager.Instance.TimerSlider.value = currentBossTimer;
+        }
         enemy.InitEnemy(bossData);
         AudioManager.Instance.PlayBGM(BGMType.Boss);
 
-        if (UImanager.Instance != null)
-            UImanager.Instance.ToggleBossTimerUI(true);
     }
 
     /// <summary> 보스전 실패 시 받는 패널티 </summary>
@@ -200,8 +200,7 @@ public class GameManager : MonoBehaviour
 
         if(UImanager.Instance != null)
         {
-            UImanager.Instance.ResetText(currentPoint, CurrentRequiredPoint, IsMaxStage);
-            UImanager.Instance.DoPointTextEffect(Color.gold, 1.2f);
+            RefreshPointUI(Color.red, 1.2f);
             UImanager.Instance.ToggleBossTimerUI(false);
         }
 
