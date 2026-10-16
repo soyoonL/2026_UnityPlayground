@@ -1,21 +1,16 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class HitEffect : MonoBehaviour
+public class HitEffect : PoolableObject
 {
     [SerializeField] private float effectDuration = 0.4f; // 애니메이션 길이를 바꾸면 이 값도 맞춰야 함
 
-    private IObjectPool<HitEffect> managedPool;
     private Animator animator;
+
+    // 풀 주소(managedPool), Init(), 반납 처리는 PoolableObject가 처리
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-    }
-
-    public void Init(IObjectPool<HitEffect> pool)
-    {
-        managedPool = pool;
     }
 
     private void OnEnable()
@@ -29,17 +24,5 @@ public class HitEffect : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke(nameof(ReturnToPool));
-    }
-
-    private void ReturnToPool()
-    {
-        if (managedPool != null)
-        {
-            managedPool.Release(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

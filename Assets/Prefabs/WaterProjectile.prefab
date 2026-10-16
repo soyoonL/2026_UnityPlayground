@@ -112,7 +112,7 @@ MonoBehaviour:
   maxLifetime: 5
   damage: 20
   projectileAnimator: {fileID: -4840061452758629238}
-  hitEffectPrefab: {fileID: 4815724136509818925, guid: 85c7f48203872f14f959d6098d91dbaa, type: 3}
+  hitEffectPrefab: {fileID: 8624868213718890687, guid: 85c7f48203872f14f959d6098d91dbaa, type: 3}
 --- !u!61 &4320033768116958493
 BoxCollider2D:
   m_ObjectHideFlags: 0
