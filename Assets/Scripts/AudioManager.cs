@@ -139,7 +139,7 @@ public class AudioManager : MonoBehaviour
     }
 
     #region BGM 시스템
-    public void PlayBGM(BGMType type, float fadeDuration = -1f)
+    public void PlayBGM(BGMType type, float fadeDuration = -1f, float delay = 0f)
     {
         if (!bgmDictionary.TryGetValue(type, out AudioClip clip) || clip == null) return;
         if (currentBGMType == type && bgmSource.isPlaying) return;
@@ -148,11 +148,12 @@ public class AudioManager : MonoBehaviour
         float duration = fadeDuration > 0f ? fadeDuration : defaultFadeDuration;
 
         if (bgmFadeCoroutine != null) StopCoroutine(bgmFadeCoroutine);
-        bgmFadeCoroutine = StartCoroutine(FadeBGMCoroutine(clip, duration));
+        bgmFadeCoroutine = StartCoroutine(FadeBGMCoroutine(clip, duration, delay));
     }
 
-    private IEnumerator FadeBGMCoroutine(AudioClip newClip, float duration)
+    private IEnumerator FadeBGMCoroutine(AudioClip newClip, float duration,float delay)
     {
+        float startTime = Time.time;
         float targetVolume = bgmMasterVolume;
 
         if (bgmSource.isPlaying && bgmSource.volume > 0f)
@@ -169,6 +170,10 @@ public class AudioManager : MonoBehaviour
         }
 
         bgmSource.Stop();
+
+        float remaining = delay - (Time.time - startTime);
+        if (remaining > 0f) yield return new WaitForSeconds(remaining);
+
         bgmSource.clip = newClip;
         bgmSource.Play();
 
@@ -202,20 +207,20 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// 지정된 SFXType의 음원 목록 중 하나를 무작위 선택하여 피치 변형과 함께 재생합니다.
     /// </summary>
-    public void PlaySFX(SFXType type, bool useRandomPitch = false)
+    public float PlaySFX(SFXType type, bool useRandomPitch = false)
     {
         // 1. 해당 SFXType에 등록된 클립 배열 탐색
         if (!sfxDictionary.TryGetValue(type, out AudioClip[] clips) || clips == null || clips.Length == 0)
         {
             Debug.LogWarning($"[AudioManager] 등록되지 않거나 비어있는 SFX입니다: {type}");
-            return;
+            return 0f;
         }
 
         // 2. 클립 배열 중 무작위 1개 선택 (변주)
         int randomIndex = Random.Range(0, clips.Length);
         AudioClip selectedClip = clips[randomIndex];
 
-        if (selectedClip == null) return;
+        if (selectedClip == null) return 0f;
 
         // 3. 오디오 소스 할당 및 피치 변형 후 재생
         AudioSource source = GetAvailableSFXSource();
@@ -223,6 +228,8 @@ public class AudioManager : MonoBehaviour
         source.volume = sfxMasterVolume;
         source.pitch = useRandomPitch ? Random.Range(minPitch, maxPitch) : 1f;
         source.Play();
+
+        return selectedClip.length / source.pitch;
     }
     #endregion
 }
