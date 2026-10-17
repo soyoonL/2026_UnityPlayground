@@ -732,8 +732,8 @@ MonoBehaviour:
   bgmMasterVolume: 0.4
   defaultFadeDuration: 0.5
   sfxMasterVolume: 0.9
-  minPitch: 0.7
-  maxPitch: 1.15
+  minPitch: 0.6
+  maxPitch: 0.896
 --- !u!4 &38457973
 Transform:
   m_ObjectHideFlags: 0
@@ -2300,9 +2300,11 @@ MonoBehaviour:
     maxHp: 5000
     killPoint: 100
     enemySprite: {fileID: 7674782581129572315, guid: ac8e15b98d730e747a8c1f4acea2b644, type: 3}
-  killCountToBoss: 15
+  minKillCountToBoss: 10
+  maxKillCountToBoss: 15
   bossTimeLimit: 30
   bossFailPenalty: 70
+  currentKillCount: 0
 --- !u!4 &805982387
 Transform:
   m_ObjectHideFlags: 0
