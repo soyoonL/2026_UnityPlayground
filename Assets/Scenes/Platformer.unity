@@ -152,15 +152,15 @@ MonoBehaviour:
   CameraDistance: 100
   DeadZoneDepth: 0
   Composition:
-    ScreenPosition: {x: 0.10052073, y: 0.31388858}
+    ScreenPosition: {x: 0, y: 0.1}
     DeadZone:
       Enabled: 1
-      Size: {x: 0.1270833, y: 0.124074064}
+      Size: {x: 0.2, y: 0.5}
     HardLimits:
       Enabled: 0
-      Size: {x: 0.8, y: 0.8}
+      Size: {x: 0.8, y: 1}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
+  CenterOnActivate: 0
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 1, z: 1}
   Lookahead:
@@ -220,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 137966851}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1444421, y: 5.2666664, z: -100}
+  m_LocalPosition: {x: 0, y: 2.7000003, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -235,10 +235,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 378276627}
+  - component: {fileID: 378276629}
   - component: {fileID: 378276626}
   - component: {fileID: 378276625}
   - component: {fileID: 378276624}
   - component: {fileID: 378276623}
+  - component: {fileID: 378276628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -417,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 378276622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1610,7 +1612,7 @@ Transform:
   m_GameObject: {fileID: 2016663577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1444421, y: 5.2666664, z: -100}
+  m_LocalPosition: {x: 0, y: 2.7000003, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
