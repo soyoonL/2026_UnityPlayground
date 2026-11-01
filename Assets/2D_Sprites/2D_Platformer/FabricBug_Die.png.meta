@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: f4871285921352748b12ad025e929328
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1223898513264797621
+    second: FabricBug_Die_0
+  - first:
+      213: -343291165729899199
+    second: FabricBug_Die_1
+  - first:
+      213: 953221135536903986
+    second: FabricBug_Die_2
+  - first:
+      213: 1423632081239005268
+    second: FabricBug_Die_3
+  - first:
+      213: 2090280589930574064
+    second: FabricBug_Die_4
+  - first:
+      213: -9185596660605161501
+    second: FabricBug_Die_5
+  - first:
+      213: -1275881981683489861
+    second: FabricBug_Die_6
+  - first:
+      213: -8787643637347860832
+    second: FabricBug_Die_7
+  - first:
+      213: -6646286006702115193
+    second: FabricBug_Die_8
+  - first:
+      213: 447040331793303094
+    second: FabricBug_Die_9
+  - first:
+      213: 3991111302424460396
+    second: FabricBug_Die_10
+  - first:
+      213: -433827956750330451
+    second: FabricBug_Die_11
+  - first:
+      213: -3231357768720543663
+    second: FabricBug_Die_12
+  - first:
+      213: 7448366824957742620
+    second: FabricBug_Die_13
+  - first:
+      213: -3649205329025702309
+    second: FabricBug_Die_14
+  - first:
+      213: 4199141912608622624
+    second: FabricBug_Die_15
+  - first:
+      213: -765144998153593186
+    second: FabricBug_Die_16
+  - first:
+      213: -4092124350824630907
+    second: FabricBug_Die_17
+  - first:
+      213: 4056005839722590972
+    second: FabricBug_Die_18
+  - first:
+      213: 859590089474723148
+    second: FabricBug_Die_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FabricBug_Die_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 319
+        width: 150
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4819b369c6d30fe0800000000000000
+      internalID: -1223898513264797621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_1
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 311
+        width: 154
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14db32ce0826c3bf0800000000000000
+      internalID: -343291165729899199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_2
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 315
+        width: 158
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237521882958a3d00800000000000000
+      internalID: 953221135536903986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_3
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 287
+        width: 150
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458d91dc5d1c1c310800000000000000
+      internalID: 1423632081239005268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 11
+        width: 150
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0b4bb2f1b220d10800000000000000
+      internalID: 2090280589930574064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 15
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef6d9a2184368080800000000000000
+      internalID: -9185596660605161501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_6
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 19
+        width: 150
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb32f6af8182b4ee0800000000000000
+      internalID: -1275881981683489861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 15
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aeb827bba40c0680800000000000000
+      internalID: -8787643637347860832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_8
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 11
+        width: 150
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 786fed62716a3c3a0800000000000000
+      internalID: -6646286006702115193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_9
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 15
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63600d030d4343600800000000000000
+      internalID: 447040331793303094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_10
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 11
+        width: 150
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c7e007596436730800000000000000
+      internalID: 3991111302424460396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_11
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 15
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5534895cbbaf9f0800000000000000
+      internalID: -433827956750330451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_12
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 11
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1509635da39e723d0800000000000000
+      internalID: -3231357768720543663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_13
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 7
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1e09660a2aed5760800000000000000
+      internalID: 7448366824957742620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_14
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 11
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b56e5fa661b6b5dc0800000000000000
+      internalID: -3649205329025702309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_15
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 7
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028cd7e4259564a30800000000000000
+      internalID: 4199141912608622624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_16
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 11
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e53679da8a165f0800000000000000
+      internalID: -765144998153593186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_17
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 7
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5853f5c759ad537c0800000000000000
+      internalID: -4092124350824630907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_18
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 11
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf2339352d3d94830800000000000000
+      internalID: 4056005839722590972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FabricBug_Die_19
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 7
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d469fc1a0edeb00800000000000000
+      internalID: 859590089474723148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FabricBug_Die_0: -1223898513264797621
+      FabricBug_Die_1: -343291165729899199
+      FabricBug_Die_10: 3991111302424460396
+      FabricBug_Die_11: -433827956750330451
+      FabricBug_Die_12: -3231357768720543663
+      FabricBug_Die_13: 7448366824957742620
+      FabricBug_Die_14: -3649205329025702309
+      FabricBug_Die_15: 4199141912608622624
+      FabricBug_Die_16: -765144998153593186
+      FabricBug_Die_17: -4092124350824630907
+      FabricBug_Die_18: 4056005839722590972
+      FabricBug_Die_19: 859590089474723148
+      FabricBug_Die_2: 953221135536903986
+      FabricBug_Die_3: 1423632081239005268
+      FabricBug_Die_4: 2090280589930574064
+      FabricBug_Die_5: -9185596660605161501
+      FabricBug_Die_6: -1275881981683489861
+      FabricBug_Die_7: -8787643637347860832
+      FabricBug_Die_8: -6646286006702115193
+      FabricBug_Die_9: 447040331793303094
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
