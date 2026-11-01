@@ -63,11 +63,13 @@ namespace Plaformer
         private Vector2 actionOrigin;
         private float randomSeed;
         private bool hasHitThisAttack;
+        private bool isAggro;
 
         // 애니메이터 파라미터 (문자열 대신 해시 사용)
         private static readonly int SpeedHash = Animator.StringToHash("Speed");
         private static readonly int WindupHash = Animator.StringToHash("Windup");
         private static readonly int AttackHash = Animator.StringToHash("Attack");
+        private static readonly int AttackTagHash = Animator.StringToHash("Attack");
         private static readonly int HurtHash = Animator.StringToHash("Hurt");
         private static readonly int DieHash = Animator.StringToHash("Die");
         private bool hasSpeedParam, hasWindupParam, hasAttackParam, hasHurtParam, hasDieParam;
@@ -107,6 +109,8 @@ namespace Plaformer
         public int AttackDamage => data.Damage;
         public bool CanAttack => !IsDead && state != EnemyState.Hurt && Time.time >= nextAttackTime;
 
+        public bool IsAggro => isAggro;
+
         #endregion
 
         #region 생명주기
@@ -137,6 +141,7 @@ namespace Plaformer
             spawnPosition = transform.position;
             randomSeed = UnityEngine.Random.value * 100f;
             nextAttackTime = 0f;
+            isAggro = false;
             hasHitThisAttack = false;
             rb.simulated = true;
 
@@ -295,6 +300,22 @@ namespace Plaformer
             return !Physics2D.Raycast(ledgeOrigin, Vector2.down, ledgeCheckDistance, groundLayer);
         }
 
+        /// <summary>내 몸 범위 안에 있는 플레이어 콜라이더 (충돌 설정과 무관하게 감지)</summary>
+        public Collider2D OverlapPlayerInBody()
+        {
+            Bounds b = col.bounds;
+            return Physics2D.OverlapBox(b.center, b.size, 0f, playerLayer);
+        }
+
+        /// <summary>"Attack" 태그가 붙은 애니메이션이 재생 중인지 (애니메이터가 없으면 false)</summary>
+        public bool IsAttackAnimationPlaying()
+        {
+            if (animator == null || animator.runtimeAnimatorController == null) return false;
+            if (animator.GetCurrentAnimatorStateInfo(0).tagHash == AttackTagHash) return true;
+            return animator.IsInTransition(0) && animator.GetNextAnimatorStateInfo(0).tagHash == AttackTagHash;
+        }
+
+        public void SetAggro(bool value) => isAggro = value;
         #endregion
 
         #region 내부 처리

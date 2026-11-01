@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Plaformer
 {
 
+
     /// <summary>
     /// 미치광이 인형: 플레이어를 감지하면 준비 동작 후 그 방향으로 돌진한다.
     /// 벽·낭떠러지를 만나거나, 최대 거리·시간에 도달하거나, 플레이어를 들이받으면 멈춘다.
@@ -77,10 +78,15 @@ namespace Plaformer
                     break;
 
                 case EnemyState.Attacking:
+                    Collider2D hit = enemy.OverlapPlayerInBody();
+                    if (hit != null && enemy.TryDamage(hit))
+                    {
+                        StopDash(enemy);
+                        break;
+                    }
                     float traveled = Mathf.Abs(enemy.Position.x - enemy.ActionOrigin.x);
                     // 빠르게 움직이므로 다음 물리 프레임 이동 거리만큼 미리 확인
                     bool blocked = enemy.IsBlockedAhead(enemy.Facing, dashSpeed * Time.fixedDeltaTime);
-
                     if (blocked || traveled >= maxDashDistance || enemy.StateTime >= maxDashTime)
                     {
                         StopDash(enemy);

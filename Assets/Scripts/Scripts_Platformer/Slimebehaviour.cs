@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace Plaformer
 {
-    using UnityEngine;
-
+  
     /// <summary>
     /// 실뭉치 슬라임: 플레이어를 감지하면 다가가서 근접 공격한다.
     /// 흐름: Idle → Chase → Windup → (타격) → Recover → Idle
@@ -21,17 +20,27 @@ namespace Plaformer
         [SerializeField] private Vector2 hitOffset = new Vector2(0.5f, 0f);
         [SerializeField, Min(0f)] private float hitRadius = 0.5f;
 
+        [Header("추적")]
+        [Tooltip("발견 후 이 거리 밖으로 벗어나면 추적 포기. 0이면 끝까지 추적")]
+        [SerializeField, Min(0f)] private float loseRange = 0f;
+
         public override void Think(Enemy enemy)
         {
             switch (enemy.State)
             {
                 case EnemyState.Idle:
                 case EnemyState.Chase:
-                    if (!enemy.TryGetPlayer(detectRange, out Vector2 playerPos))
+                    // 발견 전에는 감지 범위, 발견 후에는 포기 거리(0이면 무한)로 판정
+                    float range = !enemy.IsAggro ? detectRange
+                                : (loseRange > 0f ? loseRange : float.PositiveInfinity);
+
+                    if (!enemy.TryGetPlayer(range, out Vector2 playerPos))
                     {
+                        enemy.SetAggro(false);
                         if (enemy.State != EnemyState.Idle) enemy.ChangeState(EnemyState.Idle);
                         return;
                     }
+                    enemy.SetAggro(true);
 
                     float dx = playerPos.x - enemy.Position.x;
                     enemy.Face(dx);
@@ -63,7 +72,8 @@ namespace Plaformer
                     break;
 
                 case EnemyState.Recover:
-                    if (enemy.StateTime >= recoverTime)
+                    // 최소 경직 시간이 지나고, 공격 애니메이션도 끝나야 복귀
+                    if (enemy.StateTime >= recoverTime && !enemy.IsAttackAnimationPlaying())
                         enemy.ChangeState(EnemyState.Idle);
                     break;
             }
