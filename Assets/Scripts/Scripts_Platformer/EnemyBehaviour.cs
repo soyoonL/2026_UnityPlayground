@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Plaformer
+namespace Platformer
 {
     /// <summary>
     /// 적의 이동·공격 방식을 정의하는 추상 클래스 (전략 패턴).

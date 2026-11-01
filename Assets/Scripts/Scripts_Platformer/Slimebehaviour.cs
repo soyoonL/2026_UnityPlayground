@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Plaformer
+namespace Platformer
 {
   
     /// <summary>

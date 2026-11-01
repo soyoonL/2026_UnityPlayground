@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Plaformer
+namespace Platformer
 {
     /// <summary>
     /// 적 한 종류의 기본 데이터. 런타임에 값을 바꾸지 않는 읽기 전용 에셋.

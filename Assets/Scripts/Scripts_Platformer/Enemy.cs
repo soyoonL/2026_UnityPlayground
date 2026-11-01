@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Plaformer
+namespace Platformer
 {
     /// <summary>적의 현재 행동 상태</summary>
     public enum EnemyState

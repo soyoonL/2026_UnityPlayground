@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Plaformer
+namespace Platformer
 {
     /// <summary>
     /// 게임 전체 상태를 관리한다. 지금은 골드만 담당.
