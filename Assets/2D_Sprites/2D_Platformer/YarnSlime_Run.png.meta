@@ -143,12 +143,12 @@ TextureImporter:
       name: YarnSlime_Run_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 259
-        width: 186
-        height: 162
+        x: 0
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: YarnSlime_Run_1
       rect:
         serializedVersion: 2
-        x: 283
-        y: 259
-        width: 170
-        height: 190
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: YarnSlime_Run_2
       rect:
         serializedVersion: 2
-        x: 539
-        y: 279
-        width: 166
-        height: 178
+        x: 512
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: YarnSlime_Run_3
       rect:
         serializedVersion: 2
-        x: 795
-        y: 259
-        width: 166
-        height: 186
+        x: 768
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: YarnSlime_Run_4
       rect:
         serializedVersion: 2
-        x: 591
-        y: 259
-        width: 94
-        height: 18
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: YarnSlime_Run_5
       rect:
         serializedVersion: 2
-        x: 23
-        y: 3
-        width: 182
-        height: 162
+        x: 256
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: YarnSlime_Run_6
       rect:
         serializedVersion: 2
-        x: 287
-        y: 3
-        width: 166
-        height: 190
+        x: 512
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: YarnSlime_Run_7
       rect:
         serializedVersion: 2
-        x: 543
-        y: 23
-        width: 162
-        height: 178
+        x: 768
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -315,55 +315,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: YarnSlime_Run_8
-      rect:
-        serializedVersion: 2
-        x: 795
-        y: 3
-        width: 170
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34e2c0829d8302130800000000000000
-      internalID: 3539891812444155459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YarnSlime_Run_9
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 3
-        width: 94
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14d9d7545fabd6b60800000000000000
-      internalID: 7741048897115364673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9ea65ffde90ae2c4ba98a698db6d75ad
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +327,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       YarnSlime_Run_0: 2715069223403816423
       YarnSlime_Run_1: -3186166584452257067
@@ -381,8 +339,6 @@ TextureImporter:
       YarnSlime_Run_5: -4543619321619012210
       YarnSlime_Run_6: 6310002233184021501
       YarnSlime_Run_7: 7874850362067944804
-      YarnSlime_Run_8: 3539891812444155459
-      YarnSlime_Run_9: 7741048897115364673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
