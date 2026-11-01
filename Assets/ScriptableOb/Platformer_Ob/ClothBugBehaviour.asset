@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e666ff8b2e67842a1e5afa5ca49414, type: 3}
+  m_Name: ClothBugBehaviour
+  m_EditorClassIdentifier: Assembly-CSharp::Plaformer.ClothBugBehaviour
+  detectRange: 5
+  attackCooldown: 1.5
+  hoverRadius: {x: 2, y: 0.6}
+  hoverFrequency: 0.25
+  followSharpness: 4
+  pinPrefab: {fileID: 0}
+  aimTime: 0.3
+  projectileSpeed: 8
+  fireOffset: {x: 0.3, y: 0}
+  recoverTime: 0.2

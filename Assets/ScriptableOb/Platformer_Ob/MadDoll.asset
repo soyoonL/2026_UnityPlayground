@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ef71c57aa88fb47ade5d91dd5b7e4a, type: 3}
+  m_Name: MadDoll
+  m_EditorClassIdentifier: Assembly-CSharp::Plaformer.EnemyData
+  enemyName: Enemy
+  maxHP: 10
+  damage: 1
+  moveSpeed: 2
+  knockbackForce: 4
+  hurtStunTime: 0.2
+  goldReward: 5
+  sprite: {fileID: 0}
+  animatorController: {fileID: 0}
+  behaviour: {fileID: 11400000, guid: c5785f22f3c5c0b4eb51671843a1ec85, type: 2}
