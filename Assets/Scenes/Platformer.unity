@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 735303531}
   - component: {fileID: 735303530}
   - component: {fileID: 735303529}
+  - component: {fileID: 735303534}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
@@ -662,7 +663,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2715069223403816423, guid: 234060a0f6b8e574b9a5f3dc08869422, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -682,7 +683,7 @@ Transform:
   m_GameObject: {fileID: 735303528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 10, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

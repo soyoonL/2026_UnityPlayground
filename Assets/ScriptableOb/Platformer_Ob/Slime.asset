@@ -20,5 +20,5 @@ MonoBehaviour:
   hurtStunTime: 0.2
   goldReward: 5
   sprite: {fileID: -1963878902619251956, guid: a0b58a04c055d4247a15ce4f30b2e206, type: 3}
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: d6ef20ee490762b4b9e9c4f63ce424fd, type: 2}
   behaviour: {fileID: 11400000, guid: 0bd59c5034f2b404aa21d8ab78755789, type: 2}
