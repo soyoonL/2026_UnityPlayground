@@ -26,6 +26,8 @@ namespace Platformer
     {
         /// <summary>적이 죽었을 때 발생. 골드 지급 등은 구독하는 쪽이 처리한다.</summary>
         public static event Action<Enemy> OnEnemyDied;
+        /// <summary>피해를 받았을 때 (피해량, 맞은 방향). 피격 연출용</summary>
+        public event Action<int, Vector2> Damaged;
 
         [Header("데이터")]
         [SerializeField] private EnemyData data;
@@ -192,6 +194,7 @@ namespace Platformer
             if (IsDead || damage <= 0) return;
 
             currentHP = Mathf.Max(currentHP - damage, 0);
+            Damaged?.Invoke(damage, hitDirection);
             if (currentHP == 0)
             {
                 Die();

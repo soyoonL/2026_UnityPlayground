@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
     private bool jumpCutApplied;
     private bool inputEnabled = true;
 
+    // [추가] 무기 등 외부에서 거는 제한
+    private float moveSpeedMultiplier = 1f;
+    private bool jumpEnabled = true;
+    private int facingOverride;    // 0 = 없음, 1 = 오른쪽, -1 = 왼쪽
+
     // 타이머 대신 타임스탬프 사용 → 매 프레임 감산 연산 불필요
     private float lastJumpPressedTime = float.NegativeInfinity;
     private float lastGroundedTime = float.NegativeInfinity;
@@ -81,6 +86,8 @@ public class PlayerController : MonoBehaviour
     public float MoveInput => moveInput;
     public Vector2 Velocity => rb.linearVelocity;
     public bool InputEnabled => inputEnabled;
+    public bool JumpEnabled => jumpEnabled;           // [추가]
+    public float MoveSpeedMultiplier => moveSpeedMultiplier; // [추가]
 
     /// <summary>점프 실행 시 (사운드, 이펙트, 애니메이션 트리거)</summary>
     public event Action Jumped;
@@ -101,10 +108,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>[추가] 이동 속도 배율 (무기 조준 중 감속, 슬로우 디버프 등). 1 = 기본</summary>
+    public void SetMoveSpeedMultiplier(float multiplier) => moveSpeedMultiplier = Mathf.Max(0f, multiplier);
+
+    /// <summary>[추가] 점프 허용 여부. 끌 때 저장된 선입력도 버림</summary>
+    public void SetJumpEnabled(bool enabled)
+    {
+        jumpEnabled = enabled;
+        if (!enabled) lastJumpPressedTime = float.NegativeInfinity;
+    }
+
+    /// <summary>[추가] 이동 입력과 상관없이 바라볼 방향 지정 (조준 중 마우스 쪽 보기 등)</summary>
+    public void SetFacingOverride(int direction) => facingOverride = direction == 0 ? 0 : (direction > 0 ? 1 : -1);
+
+    /// <summary>[추가] 방향 지정 해제. 다시 이동 입력을 따라감</summary>
+    public void ClearFacingOverride() => facingOverride = 0;
+
     /// <summary>점프 요청 (모바일 버튼, AI, 리플레이 등 외부 입력용). 선입력 버퍼에 들어감</summary>
     public void RequestJump()
     {
-        if (!inputEnabled) return;
+        if (!inputEnabled || !jumpEnabled) return; // [수정] 점프 잠금 확인
         jumpHeld = true;
         lastJumpPressedTime = Time.time;
     }
@@ -211,7 +234,7 @@ public class PlayerController : MonoBehaviour
 
     protected virtual void HandleMovement(ref Vector2 velocity)
     {
-        float target = moveInput * moveSpeed;
+        float target = moveInput * moveSpeed * moveSpeedMultiplier; // [수정] 배율 적용
         float rate = Mathf.Abs(target) > 0.01f ? acceleration : deceleration;
         if (!IsGrounded) rate *= airControl;
 
@@ -268,9 +291,18 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFacing()
     {
-        if (Mathf.Abs(moveInput) < 0.01f) return;
+        // [수정] 외부에서 방향을 지정했다면 그쪽을 우선
+        int dir;
+        if (facingOverride != 0)
+        {
+            dir = facingOverride;
+        }
+        else
+        {
+            if (Mathf.Abs(moveInput) < 0.01f) return;
+            dir = moveInput > 0f ? 1 : -1;
+        }
 
-        int dir = moveInput > 0f ? 1 : -1;
         if (dir == FacingDirection) return; // 방향이 바뀔 때만 Transform 수정
 
         FacingDirection = dir;
