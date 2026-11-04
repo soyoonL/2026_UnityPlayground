@@ -4,18 +4,20 @@ using UnityEngine;
 namespace Platformer
 {
     /// <summary>
-    /// 던져지는 바늘 본체. 비행·착지·끌려옴 같은 물리와 데미지 판정을 담당한다.
+    /// 던져지는 바늘 본체.
+    /// 물리 몸통(회전하지 않는 작은 원)과 그림(Visual, 진행 방향으로 회전)을 분리해서,
+    /// 회전이 땅을 밀어 바늘이 튕겨 오르는 문제를 막는다.
     /// 언제 던지고 당길지는 NeedleWeapon이 정하고, 여기서는 명령만 수행한다.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(Collider2D))]
-    [RequireComponent(typeof(DistanceJoint2D))]
     public class Needle : MonoBehaviour
     {
         [Header("구성")]
-        [Tooltip("실이 묶이는 지점 (바늘귀). 바늘 뒤쪽 끝에 둔 자식 오브젝트")]
+        [Tooltip("바늘 그림, 바늘귀, 데미지 판정을 담은 자식 오브젝트 (이것만 회전함)")]
+        [SerializeField] private Transform visual;
+        [Tooltip("실이 묶이는 지점 (Visual의 자식, 바늘 뒤쪽 끝)")]
         [SerializeField] private Transform ropeAnchor;
-        [Tooltip("데미지 판정 콜라이더. 비우면 바늘 본체 콜라이더를 사용")]
+        [Tooltip("데미지 판정 콜라이더 (Visual에 붙인 Is Trigger 콜라이더)")]
         [SerializeField] private Collider2D hitBox;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -23,13 +25,12 @@ namespace Platformer
         [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private LayerMask groundLayer;
 
-        [Header("회전")]
+        [Header("회전 (그림만)")]
         [Tooltip("이 속도보다 느려지면 바닥에 눕는다")]
         [SerializeField, Min(0f)] private float restSpeed = 1f;
         [SerializeField, Min(0f)] private float rotateSharpness = 15f;
 
         private Rigidbody2D rb;
-        private DistanceJoint2D joint;
         private PhysicsMaterial2D physicsMaterial;
         private NeedleData data;
         private Transform hand;
@@ -37,6 +38,8 @@ namespace Platformer
         private bool isActive;
         private bool isPulling;
         private bool hasLanded;
+        private float targetAngle;
+        private float currentAngle;
 
         // 데미지 판정용 (미리 할당해서 재사용)
         private ContactFilter2D enemyFilter;
@@ -58,23 +61,22 @@ namespace Platformer
             if (rb != null) return;
 
             rb = GetComponent<Rigidbody2D>();
-            joint = GetComponent<DistanceJoint2D>();
-            if (hitBox == null) hitBox = GetComponent<Collider2D>();
             if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            if (visual == null && spriteRenderer != null) visual = spriteRenderer.transform;
 
             rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.freezeRotation = true; // 회전은 직접 계산 (진행 방향을 바라보게)
+            rb.freezeRotation = true; // 몸통은 절대 회전하지 않음 (그림만 회전)
+            rb.rotation = 0f;
             rb.interpolation = RigidbodyInterpolation2D.Interpolate;
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-            // 실: 손(월드 좌표)과의 거리가 최대 길이를 넘지 않게만 제한
-            joint.connectedBody = null;
-            joint.autoConfigureConnectedAnchor = false;
-            joint.autoConfigureDistance = false;
-            joint.maxDistanceOnly = true;
-            joint.enableCollision = false;
-            if (ropeAnchor != null)
-                joint.anchor = transform.InverseTransformPoint(ropeAnchor.position);
+            // 실 길이는 코드로 제한하므로 남아 있는 Joint는 꺼 둔다
+            foreach (Joint2D j in GetComponents<Joint2D>()) j.enabled = false;
+
+            if (visual == transform)
+                Debug.LogWarning($"{name}: 바늘 그림(SpriteRenderer)을 자식 오브젝트 Visual로 옮겨주세요. 루트에 있으면 회전 문제가 다시 생깁니다.", this);
+            if (hitBox != null && !hitBox.isTrigger)
+                Debug.LogWarning($"{name}: Hit Box 콜라이더의 Is Trigger를 켜주세요. 꺼져 있으면 바닥에 걸려 튕깁니다.", this);
         }
 
         public void Initialize(NeedleData needleData, Transform handPoint)
@@ -93,7 +95,6 @@ namespace Platformer
                 friction = data.Friction
             };
             rb.sharedMaterial = physicsMaterial;
-            joint.distance = data.MaxRopeLength;
 
             enemyFilter = new ContactFilter2D();
             enemyFilter.SetLayerMask(enemyLayer);
@@ -115,21 +116,19 @@ namespace Platformer
         {
             gameObject.SetActive(true);
 
-            float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
-            transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, angle));
+            transform.SetPositionAndRotation(position, Quaternion.identity);
             rb.position = position;
-            rb.rotation = angle;
+            rb.rotation = 0f;
             rb.linearVelocity = velocity;
             rb.angularVelocity = 0f;
 
-            joint.connectedAnchor = hand.position;
-            joint.enabled = true;
+            currentAngle = targetAngle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+            ApplyVisualRotation();
 
             isActive = true;
             isPulling = false;
             hasLanded = false;
             nextHitTime.Clear();
-            UpdateFlip(angle);
         }
 
         public void SetPulling(bool pulling)
@@ -154,46 +153,62 @@ namespace Platformer
             if (!isActive || data == null) return;
 
             Vector2 handPos = hand.position;
-            joint.connectedAnchor = handPos; // 플레이어가 움직이면 실의 시작점도 따라감
 
             if (isPulling)
             {
-                Vector2 target = (handPos - RopeAnchorPosition).normalized * data.PullSpeed;
+                Vector2 target = (handPos - rb.position).normalized * data.PullSpeed;
                 rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, target, data.PullAcceleration * Time.fixedDeltaTime);
             }
 
-            UpdateRotation(handPos);
+            ApplyRopeLimit(handPos);
+            targetAngle = ComputeTargetAngle(handPos);
             DealDamage();
         }
 
-        private void UpdateRotation(Vector2 handPos)
+        /// <summary>
+        /// 실 길이 제한. 손에서 실 길이보다 멀어지면 바깥으로 나가는 속도를 없애고
+        /// 넘어선 만큼 안쪽으로 당긴다. 플레이어가 멀어지면 바늘이 이 힘으로 끌려온다.
+        /// </summary>
+        private void ApplyRopeLimit(Vector2 handPos)
+        {
+            Vector2 offset = rb.position - handPos;
+            float max = data.MaxRopeLength;
+            float sqrDist = offset.sqrMagnitude;
+            if (sqrDist <= max * max) return;
+
+            float dist = Mathf.Sqrt(sqrDist);
+            Vector2 outward = offset / dist;
+            Vector2 v = rb.linearVelocity;
+
+            float outwardSpeed = Vector2.Dot(v, outward);
+            if (outwardSpeed > 0f) v -= outward * outwardSpeed;
+
+            // 넘어선 거리를 몇 스텝에 걸쳐 부드럽게 되돌림 (한 번에 되돌리면 튐)
+            v -= outward * ((dist - max) / Time.fixedDeltaTime * 0.3f);
+            rb.linearVelocity = v;
+        }
+
+        // 그림이 바라볼 각도 계산 (물리에는 영향 없음)
+        private float ComputeTargetAngle(Vector2 handPos)
         {
             Vector2 fromHand = rb.position - handPos;
             Vector2 velocity = rb.linearVelocity;
-            bool ropeTaut = fromHand.sqrMagnitude >= (data.MaxRopeLength - 0.05f) * (data.MaxRopeLength - 0.05f);
+            float taut = data.MaxRopeLength - 0.05f;
 
-            float target;
-            if (isPulling || ropeTaut)
-                target = Mathf.Atan2(fromHand.y, fromHand.x) * Mathf.Rad2Deg;   // 실에 끌려갈 때: 바늘귀가 손 쪽
-            else if (velocity.sqrMagnitude > restSpeed * restSpeed)
-                target = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;   // 날아갈 때: 진행 방향
-            else
-                target = fromHand.x >= 0f ? 0f : 180f;                          // 멈추면 바닥에 눕기
+            if (isPulling || fromHand.sqrMagnitude >= taut * taut)
+                return Mathf.Atan2(fromHand.y, fromHand.x) * Mathf.Rad2Deg;   // 실에 끌려갈 때: 바늘귀가 손 쪽
 
-            float angle = Mathf.LerpAngle(rb.rotation, target, 1f - Mathf.Exp(-rotateSharpness * Time.fixedDeltaTime));
-            rb.rotation = angle;
-            UpdateFlip(angle);
-        }
+            if (velocity.sqrMagnitude > restSpeed * restSpeed)
+                return Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;   // 날아갈 때: 진행 방향
 
-        // 왼쪽을 향할 때 스프라이트가 뒤집혀 보이지 않도록 상하 반전
-        private void UpdateFlip(float angle)
-        {
-            if (spriteRenderer != null)
-                spriteRenderer.flipY = Mathf.Abs(Mathf.DeltaAngle(0f, angle)) > 90f;
+            // 멈추면 지금 각도에서 가까운 쪽으로 눕기 (플레이어가 지나가도 뒤집히지 않음)
+            return Mathf.Abs(Mathf.DeltaAngle(currentAngle, 0f)) <= 90f ? 0f : 180f;
         }
 
         private void DealDamage()
         {
+            if (hitBox == null) return;
+
             int count = hitBox.Overlap(enemyFilter, overlapResults);
             if (count == 0) return;
 
@@ -230,6 +245,28 @@ namespace Platformer
             // 무거운 바늘: 처음 부딪힐 때 속도를 크게 잃어서 튕기지 않고 털썩 떨어짐
             hasLanded = true;
             rb.linearVelocity *= data.ImpactSpeedKeep;
+        }
+
+        #endregion
+
+        #region 그림 회전
+
+        // 화면 프레임마다 부드럽게 회전 (보간된 위치와 맞춰 자연스럽게 보이도록)
+        private void Update()
+        {
+            if (!isActive) return;
+            currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, 1f - Mathf.Exp(-rotateSharpness * Time.deltaTime));
+            ApplyVisualRotation();
+        }
+
+        private void ApplyVisualRotation()
+        {
+            if (visual != null && visual != transform)
+                visual.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+
+            // 왼쪽을 향할 때 그림이 뒤집혀 보이지 않도록 상하 반전
+            if (spriteRenderer != null)
+                spriteRenderer.flipY = Mathf.Abs(Mathf.DeltaAngle(0f, currentAngle)) > 90f;
         }
 
         #endregion

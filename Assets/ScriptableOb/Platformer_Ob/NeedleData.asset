@@ -16,11 +16,11 @@ MonoBehaviour:
   chargeMoveMultiplier: 0.3
   minThrowSpeed: 0
   maxThrowSpeed: 10
-  gravityScale: 1
+  gravityScale: 1.5
   mass: 3
   linearDamping: 0.1
   bounciness: 0.05
-  friction: 0.8
+  friction: 10
   impactSpeedKeep: 0.35
   maxRopeLength: 12
   maxRopeSag: 1.2
